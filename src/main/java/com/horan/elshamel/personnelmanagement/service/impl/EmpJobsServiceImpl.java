@@ -19,6 +19,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class EmpJobsServiceImpl extends BaseServiceImpl<EmpJobs,Long> implements EmpJobsService {
 
+    private final EmpJobsRepo repo;
+
+    @Override
+    public List<EmpJobs> findJobs(Long id, String name) {
+        return repo.findJobs(id,name);
+    }
+
+
 //    private final EmpJobsRepo repo;
 //
 //    @Override

@@ -14,6 +14,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class EmpPartsServiceImpl extends BaseServiceImpl<EmpParts,Long> implements EmpPartsService {
 
+    private final EmpPartsRepo repo;
+
+    @Override
+    public List<EmpParts> findParts(Long id, String name) {
+        return repo.findParts(id,name);
+    }
+
 //    private final EmpPartsRepo repo;
 //
 //    @Override

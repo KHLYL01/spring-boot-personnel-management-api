@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface EmpNationsService extends BaseService<Long,EmpNations> {
 
+    List<EmpNations> findNations(Long id, String name);
+
 //    List<EmpNations> findAll();
 //
 //    EmpNations save(EmpNations dto);

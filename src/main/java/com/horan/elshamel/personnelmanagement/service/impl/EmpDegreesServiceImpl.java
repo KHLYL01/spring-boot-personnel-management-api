@@ -2,14 +2,24 @@ package com.horan.elshamel.personnelmanagement.service.impl;
 
 import com.horan.elshamel.personnelmanagement.base.BaseServiceImpl;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpDegrees;
+import com.horan.elshamel.personnelmanagement.repo.EmpDegreesRepo;
 import com.horan.elshamel.personnelmanagement.service.EmpDegreesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class EmpDegreesServiceImpl extends BaseServiceImpl<EmpDegrees,Long> implements EmpDegreesService {
-    //    private final EmpDegreesRepo repo;
+
+    private final EmpDegreesRepo repo;
+
+    @Override
+    public List<EmpDegrees> findDegrees(Double martaba, Double draga) {
+        return repo.findDegrees(martaba,draga);
+    }
+
 //
 //    @Override
 //    public List<EmpDegrees> findAll() {

@@ -2,6 +2,7 @@ package com.horan.elshamel.personnelmanagement.controller;
 
 import com.horan.elshamel.personnelmanagement.model.entity.EmpJobs;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpJobs;
+import com.horan.elshamel.personnelmanagement.model.entity.EmpParts;
 import com.horan.elshamel.personnelmanagement.service.EmpJobsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,15 @@ import java.util.List;
 public class EmpJobsController {
 
     private final EmpJobsService service;
+
+    @GetMapping("/find")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<EmpJobs> findJobs(
+            @RequestParam(value = "id", required = false) Long id,
+            @RequestParam(value = "name", required = false) String name) {
+        return service.findJobs(id, name);
+    }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)

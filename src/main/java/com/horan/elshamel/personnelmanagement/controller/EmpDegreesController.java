@@ -1,6 +1,7 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
 import com.horan.elshamel.personnelmanagement.model.entity.EmpDegrees;
+import com.horan.elshamel.personnelmanagement.model.entity.EmpJobs;
 import com.horan.elshamel.personnelmanagement.service.EmpDegreesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,15 @@ import java.util.List;
 public class EmpDegreesController {
 
     private final EmpDegreesService service;
+
+    @GetMapping("/find")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<EmpDegrees> findDegrees(
+            @RequestParam(value = "martaba", required = false) Double martaba,
+            @RequestParam(value = "draga", required = false) Double draga) {
+        return service.findDegrees(martaba,draga);
+    }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)

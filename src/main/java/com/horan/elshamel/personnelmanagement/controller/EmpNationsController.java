@@ -1,6 +1,7 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
 import com.horan.elshamel.personnelmanagement.model.entity.EmpNations;
+import com.horan.elshamel.personnelmanagement.model.entity.EmpNations;
 import com.horan.elshamel.personnelmanagement.service.EmpNationsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,16 @@ public class EmpNationsController {
     public List<EmpNations> findAll() {
         return service.findAll();
     }
+
+    @GetMapping("/find")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<EmpNations> findNations(
+            @RequestParam(value = "id", required = false) Long id,
+            @RequestParam(value = "name", required = false) String name) {
+        return service.findNations(id, name);
+    }
+
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

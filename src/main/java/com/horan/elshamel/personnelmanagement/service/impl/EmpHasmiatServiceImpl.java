@@ -1,0 +1,63 @@
+package com.horan.elshamel.personnelmanagement.service.impl;
+
+import com.horan.elshamel.personnelmanagement.base.BaseServiceImpl;
+import com.horan.elshamel.personnelmanagement.model.dto.EmpHasmiatSearchDto;
+import com.horan.elshamel.personnelmanagement.model.entity.EmpHasmiat;
+import com.horan.elshamel.personnelmanagement.repo.EmpHasmiatRepo;
+import com.horan.elshamel.personnelmanagement.service.EmpHasmiatService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+public class EmpHasmiatServiceImpl extends BaseServiceImpl<EmpHasmiat,Long> implements EmpHasmiatService {
+
+    private final EmpHasmiatRepo repo;
+
+    @Override
+    public List<EmpHasmiatSearchDto> searchHasmiat(String name, String cardId) {
+        return repo.searchHasmiat(name, cardId);
+    }
+
+
+    //    private final EmpHasmiatRepo repo;
+//
+//    @Override
+//    public List<EmpHasmiat> findAll() {
+//        return repo.findAll();
+//    }
+//
+//    @Override
+//    public EmpHasmiat save( EmpHasmiat dto) {
+//        repo.save(dto);
+//        return null;
+//    }
+//
+//    @Override
+//    public EmpHasmiat update(EmpHasmiat dto) {
+//        EmpHasmiat empDegrees = findById(dto.getId());
+//        empDegrees.setMartaba(dto.getMartaba());
+//        empDegrees.setDraga(dto.getDraga());
+//        empDegrees.setElawa(dto.getElawa());
+//        empDegrees.setNaqlBadal(dto.getNaqlBadal());
+//        empDegrees.setInHasmiatBadal(dto.getInHasmiatBadal());
+//        empDegrees.setOutHasmiatadal(dto.getOutHasmiatadal());
+//        empDegrees.setSalary(dto.getSalary());
+//        empDegrees.setType(dto.getType());
+//        repo.save(empDegrees);
+//        return null;
+//    }
+//
+//    @Override
+//    public void delete(long id) {
+//        repo.delete(findById(id));
+//    }
+//
+//    private EmpHasmiat findById(long id){
+//        return repo.findById(id).orElseThrow(
+//                () -> new RuntimeException("Emp jobs with id "+ id + " not found")
+//        );
+//    }
+}

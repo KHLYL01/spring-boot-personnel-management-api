@@ -1,5 +1,8 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
+import com.horan.elshamel.personnelmanagement.model.dto.EmployeeFindDto;
+import com.horan.elshamel.personnelmanagement.model.dto.EmployeeSearchDto;
+import com.horan.elshamel.personnelmanagement.model.entity.EmpEndEmp;
 import com.horan.elshamel.personnelmanagement.model.entity.Employee;
 import com.horan.elshamel.personnelmanagement.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -26,6 +30,40 @@ public class EmployeeController {
     public List<Employee> findAll() {
         return service.findAll();
     }
+
+    @GetMapping("/search")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<EmployeeSearchDto> searchEmployee(
+            @RequestParam(value = "id", required = false) Long id,
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "cardId", required = false) String cardId,
+            @RequestParam(value = "jobId", required = false) Long jobId,
+            @RequestParam(value = "partId", required = false) Long partId,
+            @RequestParam(value = "fia", required = false) String fia,
+            @RequestParam(value = "draga", required = false) BigDecimal draga,
+            @RequestParam(value = "jobState", required = false) String jobState,
+            @RequestParam(value = "empType", required = false) String empType) {
+        return service.searchEmployee(id, name, cardId, jobId, partId, fia, draga, jobState, empType);
+    }
+
+    @GetMapping("/find")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<EmployeeFindDto> findEmployee(
+            @RequestParam(value = "id", required = false) Long id,
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "cardId", required = false) String cardId,
+            @RequestParam(value = "empType", required = false) String empType) {
+        return service.findEmployee(id, name, cardId,empType);
+    }
+
+//    @GetMapping("/{id}")
+//    @ResponseStatus(HttpStatus.OK)
+//    @ResponseBody
+//    public Employee findById(@PathVariable Long id) {
+//        return service.findById(id);
+//    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

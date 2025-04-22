@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface EmpJobsService extends BaseService<Long,EmpJobs> {
 
+    List<EmpJobs> findJobs(Long id,String name);
+
 //    List<EmpJobs> findAll();
 //
 //    EmpJobs save(EmpJobs dto);

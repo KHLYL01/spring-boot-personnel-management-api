@@ -15,6 +15,17 @@ public class EmpPartsController {
 
     private final EmpPartsService service;
 
+
+    @GetMapping("/find")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<EmpParts> findParts(
+            @RequestParam(value = "id", required = false) Long id,
+            @RequestParam(value = "name", required = false) String name) {
+        return service.findParts(id, name);
+    }
+
+
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
@@ -32,8 +43,8 @@ public class EmpPartsController {
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public EmpParts update(@PathVariable Long id,@RequestBody  EmpParts dto) {
-        return service.update(id,dto);
+    public EmpParts update(@PathVariable Long id, @RequestBody EmpParts dto) {
+        return service.update(id, dto);
     }
 
     @DeleteMapping("/{id}")

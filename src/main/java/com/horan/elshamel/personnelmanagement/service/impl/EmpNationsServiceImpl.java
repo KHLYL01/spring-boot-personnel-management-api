@@ -3,6 +3,8 @@ package com.horan.elshamel.personnelmanagement.service.impl;
 import com.horan.elshamel.personnelmanagement.base.BaseServiceImpl;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpDegreesWorkers;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpNations;
+import com.horan.elshamel.personnelmanagement.model.entity.EmpNations;
+import com.horan.elshamel.personnelmanagement.repo.EmpNationsRepo;
 import com.horan.elshamel.personnelmanagement.repo.EmpNationsRepo;
 import com.horan.elshamel.personnelmanagement.service.EmpNationsService;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +15,14 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class EmpNationsServiceImpl extends BaseServiceImpl<EmpNations,Long> implements EmpNationsService {
+
+
+    private final EmpNationsRepo repo;
+
+    @Override
+    public List<EmpNations> findNations(Long id, String name) {
+        return repo.findNations(id,name);
+    }
 
 //    private final EmpNationsRepo repo;
 //

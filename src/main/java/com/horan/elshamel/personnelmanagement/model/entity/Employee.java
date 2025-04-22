@@ -21,6 +21,7 @@ public class Employee extends BaseEntity<Long> {
 //    @Column(name = "ID", nullable = false)
 //    private Long id;
 
+
     @Column(name = "DEGREEID")
     private Long degreeId;
 
@@ -265,4 +266,6 @@ public class Employee extends BaseEntity<Long> {
 
     @Column(name = "DMOBASHRAH", length = 20)
     private String dmobashrah;
+
+
 }

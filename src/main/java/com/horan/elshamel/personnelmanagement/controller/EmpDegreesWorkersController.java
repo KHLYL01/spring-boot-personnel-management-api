@@ -1,6 +1,5 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
-import com.horan.elshamel.personnelmanagement.model.entity.EmpDegrees;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpDegreesWorkers;
 import com.horan.elshamel.personnelmanagement.service.EmpDegreesWorkersService;
 import lombok.RequiredArgsConstructor;
