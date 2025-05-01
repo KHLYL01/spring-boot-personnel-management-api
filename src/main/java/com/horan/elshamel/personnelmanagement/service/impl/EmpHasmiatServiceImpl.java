@@ -1,8 +1,11 @@
 package com.horan.elshamel.personnelmanagement.service.impl;
 
 import com.horan.elshamel.personnelmanagement.base.BaseServiceImpl;
+import com.horan.elshamel.personnelmanagement.model.dto.EmpHasmiatDetDto;
 import com.horan.elshamel.personnelmanagement.model.dto.EmpHasmiatSearchDto;
+import com.horan.elshamel.personnelmanagement.model.entity.EmpHasmDet;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpHasmiat;
+import com.horan.elshamel.personnelmanagement.repo.EmpHasmDetRepo;
 import com.horan.elshamel.personnelmanagement.repo.EmpHasmiatRepo;
 import com.horan.elshamel.personnelmanagement.service.EmpHasmiatService;
 import lombok.RequiredArgsConstructor;
@@ -15,10 +18,31 @@ import java.util.List;
 public class EmpHasmiatServiceImpl extends BaseServiceImpl<EmpHasmiat,Long> implements EmpHasmiatService {
 
     private final EmpHasmiatRepo repo;
+    private final EmpHasmDetRepo repoDet;
 
     @Override
     public List<EmpHasmiatSearchDto> searchHasmiat(String name, String cardId) {
         return repo.searchHasmiat(name, cardId);
+    }
+
+    @Override
+    public EmpHasmDet saveHasmiatDet(EmpHasmDet empHasmDet) {
+        return repoDet.save(empHasmDet);
+    }
+
+    @Override
+    public List<EmpHasmiatDetDto> getHasmiatDetByHasmiatId(Long hasmiatId) {
+        return repoDet.getHasmiatDetByHasmiatId(hasmiatId);
+    }
+
+    @Override
+    public void deleteHasmDetById(Long id) {
+        repoDet.deleteById(id);
+    }
+
+    @Override
+    public Long getNextDetId() {
+        return repoDet.getNextId();
     }
 
 

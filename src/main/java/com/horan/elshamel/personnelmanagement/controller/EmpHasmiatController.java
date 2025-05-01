@@ -1,7 +1,8 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
+import com.horan.elshamel.personnelmanagement.model.dto.EmpHasmiatDetDto;
 import com.horan.elshamel.personnelmanagement.model.dto.EmpHasmiatSearchDto;
-import com.horan.elshamel.personnelmanagement.model.entity.EmpEndEmp;
+import com.horan.elshamel.personnelmanagement.model.entity.EmpHasmDet;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpHasmiat;
 import com.horan.elshamel.personnelmanagement.service.EmpHasmiatService;
 import lombok.RequiredArgsConstructor;
@@ -46,6 +47,8 @@ public class EmpHasmiatController {
         return service.save(dto);
     }
 
+
+
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
@@ -58,5 +61,33 @@ public class EmpHasmiatController {
     @ResponseBody
     public void delete(@PathVariable long id) {
         service.deleteById(id);
+    }
+
+    @GetMapping("/{id}/det")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<EmpHasmiatDetDto> getHasmiatDetByHasmiatId(@PathVariable Long id) {
+        return service.getHasmiatDetByHasmiatId(id);
+    }
+
+    @GetMapping("/det/nextId")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public Long getNextDetId() {
+        return service.getNextDetId();
+    }
+
+    @PostMapping("/det")
+    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseBody
+    public EmpHasmDet saveHasmiatDet(@RequestBody EmpHasmDet dto) {
+        return service.saveHasmiatDet(dto);
+    }
+
+    @DeleteMapping("/det/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseBody
+    public void deleteHasmDetById(@PathVariable long id) {
+        service.deleteHasmDetById(id);
     }
 }

@@ -31,6 +31,13 @@ public class EmployeeController {
         return service.findAll();
     }
 
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public Employee findById(@PathVariable Long id) {
+        return service.findById(id);
+    }
+
     @GetMapping("/search")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
@@ -88,7 +95,7 @@ public class EmployeeController {
     }
 
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/image")
     public ResponseEntity<?> getImageByName(@PathVariable Long id) throws IOException {
         byte[] imageBytes = service.downloadImage(id);
 

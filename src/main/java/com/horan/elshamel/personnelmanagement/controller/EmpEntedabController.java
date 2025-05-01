@@ -1,8 +1,10 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
 import com.horan.elshamel.personnelmanagement.model.dto.EmpEntedabSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.EmpEntedabDetDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpEndEmp;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpEntedab;
+import com.horan.elshamel.personnelmanagement.model.entity.EmpEntedabDet;
 import com.horan.elshamel.personnelmanagement.service.EmpEntedabService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -60,4 +62,34 @@ public class EmpEntedabController {
     public void delete(@PathVariable long id) {
         service.deleteById(id);
     }
+
+
+    @GetMapping("/{id}/det")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<EmpEntedabDetDto> getEntedabDetByEntedabId(@PathVariable Long id) {
+        return service.getEntedabDetByEntedabId(id);
+    }
+
+    @GetMapping("/det/nextId")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public Long getNextDetId() {
+        return service.getNextDetId();
+    }
+
+    @PostMapping("/det")
+    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseBody
+    public EmpEntedabDet saveEntedabDet(@RequestBody EmpEntedabDet dto) {
+        return service.saveEntedabDet(dto);
+    }
+
+    @DeleteMapping("/det/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseBody
+    public void deleteEntedabDetById(@PathVariable long id) {
+        service.deleteEntedabDetById(id);
+    }
+
 }

@@ -1,11 +1,9 @@
 package com.horan.elshamel.personnelmanagement.model.entity;
 
-import com.horan.elshamel.personnelmanagement.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 @Setter
 @Getter
