@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 @Data
 @Builder
-public class EmpOvertimeSearchDto {
+public class EmpTakleefSearchDto {
 
     private Long id;                     // EMP_OVERTIME.ID
     private String cardId;               // رقم السجل المدني

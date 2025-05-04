@@ -13,8 +13,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "EMP_OVERTIME")
-public class EmpOvertime extends BaseEntity<Long> {
+@Table(name = "EMP_TAKLEEF")
+public class EmpTakleef extends BaseEntity<Long> {
 
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)

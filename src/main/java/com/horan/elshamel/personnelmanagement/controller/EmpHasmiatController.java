@@ -47,8 +47,6 @@ public class EmpHasmiatController {
         return service.save(dto);
     }
 
-
-
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
