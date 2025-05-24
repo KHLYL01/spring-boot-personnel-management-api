@@ -7,17 +7,18 @@ import java.math.BigDecimal;
 
 @Data
 @Builder
-public class EmpHasmiatDetDto {
+public class EmpDowraDetDto {
 
     private Long id;
     private Long empId;
-    private String employeeName;
+    private String empName;
     private BigDecimal salary;
+    private BigDecimal draga;
+    private String fia;
     private BigDecimal naqlBadal;
-    private BigDecimal ghyab;
-    private BigDecimal tagmee3;
-    private String min;
-    private BigDecimal gza;
-    private String notes;
+    private Long mokafaa;
+    private Long badalEntidab;
+    private Long badalTransfare;
+    private Long ticketCost;
 
 }

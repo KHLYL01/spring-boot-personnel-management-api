@@ -16,7 +16,7 @@ public interface EmpTakleefDetRepo extends BaseRepository<EmpTakleefDet, Long> {
     Long getNextId();
 
     @Query("SELECT NEW com.horan.elshamel.personnelmanagement.model.dto.EmpTakleefDetDto(" +
-            "td.maxId, e.name, e.salary, e.naqlBadal,td.period, " +
+            "td.maxId,e.id, e.name, e.salary, e.naqlBadal,td.period, " +
             "td.datBegin,td.datEnd,td.empWork) " +
             "FROM EmpTakleefDet td " +
             "JOIN Employee e ON td.empId = e.id " +

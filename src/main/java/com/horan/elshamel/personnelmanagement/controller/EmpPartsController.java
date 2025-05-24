@@ -1,5 +1,6 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
+import com.horan.elshamel.personnelmanagement.model.entity.EmpJobs;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpParts;
 import com.horan.elshamel.personnelmanagement.service.EmpPartsService;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,13 @@ public class EmpPartsController {
             @RequestParam(value = "id", required = false) Long id,
             @RequestParam(value = "name", required = false) String name) {
         return service.findParts(id, name);
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public EmpParts findById(@PathVariable Long id) {
+        return service.findById(id);
     }
 
 

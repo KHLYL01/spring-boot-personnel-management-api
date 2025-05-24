@@ -16,25 +16,25 @@ public class EmpDowraDet {
 
     @Id
     @Column(name = "ID")
-    private Long id;
+    private Long maxId;
 
     @Column(name = "DOWRAID")
     private Long dowraId;
 
     @Column(name = "MOKAFAA")
-    private Long compensation;
+    private Long mokafaa;
 
     @Column(name = "BADAL_ENTIDAB")
-    private Long delegationAllowance;
+    private Long badalEntidab;
 
     @Column(name = "BADAL_TRANSFARE")
-    private Long transportationAllowance;
+    private Long badalTransfare;
 
     @Column(name = "TICKET_COUST")
     private Long ticketCost;
 
     @Column(name = "TOTAL")
-    private Long totalAmount;
+    private Long total;
 
     @Column(name = "EMPID")
     private Long empId;

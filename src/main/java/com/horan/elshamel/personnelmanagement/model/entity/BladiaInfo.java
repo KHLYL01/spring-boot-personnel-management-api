@@ -40,11 +40,16 @@ public class BladiaInfo extends BaseEntity<Long> {
     @Column(name = "DATEND")
     private String datEnd;
 
+    @Column(name = "BOSS_ASSISTANT")
+    private String bossAssistant;
+
+    @Column(name = "AMANA")
+    private String amana;
+
+
 //    @Column(name = "NAMEEN")
 //    private String nameEn;
 
-//    @Column(name = "BOSS_ASSISTANT")
-//    private String bossAssistant;
 
 //    @Column(name = "SECTIONNO")
 //    private String sectionNo;

@@ -16,7 +16,7 @@ public interface EmpHasmDetRepo extends BaseRepository<EmpHasmDet, Long> {
     Long getNextId();
 
     @Query("SELECT NEW com.horan.elshamel.personnelmanagement.model.dto.EmpHasmiatDetDto(" +
-            "hd.maxId, e.name, e.salary, e.naqlBadal,hd.ghyab, " +
+            "hd.maxId,e.id, e.name, e.salary, e.naqlBadal,hd.ghyab, " +
             "hd.tagmee3,hd.min,hd.gza,hd.notes ) " +
             "FROM EmpHasmDet hd " +
             "JOIN Employee e ON hd.empId = e.id " +

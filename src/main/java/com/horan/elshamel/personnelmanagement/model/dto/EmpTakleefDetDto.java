@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 public class EmpTakleefDetDto {
 
     private Long maxId;
+    private Long empId;
     private String empName;
     private BigDecimal salary;
     private BigDecimal naqlBadal;

@@ -39,7 +39,7 @@ public class EmpPartInfo extends BaseEntity<Long> {
     @Column(name = "WORKSTATIONBOSS")
     private String workStationBoss;
 
-//    @Column(name = "EDARIABOSS")
-//    private String edariaBoss;
+    @Column(name = "EDARIABOSS")
+    private String edariaBoss;
 
 }

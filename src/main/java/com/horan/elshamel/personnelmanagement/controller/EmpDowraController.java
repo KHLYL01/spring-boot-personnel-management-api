@@ -1,7 +1,9 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
 import com.horan.elshamel.personnelmanagement.model.dto.EmpDowraSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.EmpDowraDetDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpDowra;
+import com.horan.elshamel.personnelmanagement.model.entity.EmpDowraDet;
 import com.horan.elshamel.personnelmanagement.service.EmpDowraService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -58,4 +60,34 @@ public class EmpDowraController {
     public void delete(@PathVariable long id) {
         service.deleteById(id);
     }
+
+    @GetMapping("/{id}/det")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<EmpDowraDetDto> getDowraDetByDowraId(@PathVariable Long id) {
+        return service.getDowraDetByDowraId(id);
+    }
+
+    @GetMapping("/det/nextId")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public Long getNextDetId() {
+        return service.getNextDetId();
+    }
+
+    @PostMapping("/det")
+    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseBody
+    public EmpDowraDet saveDowraDet(@RequestBody EmpDowraDet dto) {
+        return service.saveDowraDet(dto);
+    }
+
+    @DeleteMapping("/det/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseBody
+    public void deleteDowraDetById(@PathVariable long id) {
+        service.deleteDowraDetById(id);
+    }
+
+
 }

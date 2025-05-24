@@ -1,8 +1,12 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
+import com.horan.elshamel.personnelmanagement.model.dto.EmpHasmiatDetDto;
+import com.horan.elshamel.personnelmanagement.model.dto.EmpMokhalfatDetDto;
 import com.horan.elshamel.personnelmanagement.model.dto.EmpMokhalfatSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpEndEmp;
+import com.horan.elshamel.personnelmanagement.model.entity.EmpHasmDet;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpMokhalfat;
+import com.horan.elshamel.personnelmanagement.model.entity.EmpMokhalfatDet;
 import com.horan.elshamel.personnelmanagement.service.EmpMokhalfatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -59,4 +63,33 @@ public class EmpMokhalfatController {
     public void delete(@PathVariable long id) {
         service.deleteById(id);
     }
+
+    @GetMapping("/{id}/det")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<EmpMokhalfatDetDto> getMokhalfatDetByMokhalfatId(@PathVariable Long id) {
+        return service.getMokhalfatDetByMokhalfatId(id);
+    }
+
+    @GetMapping("/det/nextId")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public Long getNextDetId() {
+        return service.getNextDetId();
+    }
+
+    @PostMapping("/det")
+    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseBody
+    public EmpMokhalfatDet saveMokhalfatDet(@RequestBody EmpMokhalfatDet dto) {
+        return service.saveMokhalfatDet(dto);
+    }
+
+    @DeleteMapping("/det/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseBody
+    public void deleteMokhalfatDetById(@PathVariable long id) {
+        service.deleteMokhalfatDetById(id);
+    }
+
 }
