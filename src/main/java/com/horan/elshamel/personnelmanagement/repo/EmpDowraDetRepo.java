@@ -2,9 +2,7 @@ package com.horan.elshamel.personnelmanagement.repo;
 
 import com.horan.elshamel.personnelmanagement.base.BaseRepository;
 import com.horan.elshamel.personnelmanagement.model.dto.EmpDowraDetDto;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpMokhalfatDetDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpDowraDet;
-import com.horan.elshamel.personnelmanagement.model.entity.EmpMokhalfatDet;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;

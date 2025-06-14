@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 @Builder
 public class EmpDowraDetDto {
 
-    private Long id;
+    private Long maxId;
     private Long empId;
     private String empName;
     private BigDecimal salary;
