@@ -1,16 +1,10 @@
 package com.horan.elshamel.personnelmanagement.service.impl;
 
 import com.horan.elshamel.personnelmanagement.base.BaseServiceImpl;
-import com.horan.elshamel.personnelmanagement.model.entity.EmpDegreesWorkers;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpJobs;
-import com.horan.elshamel.personnelmanagement.model.entity.Employee;
 import com.horan.elshamel.personnelmanagement.repo.EmpJobsRepo;
-import com.horan.elshamel.personnelmanagement.repo.EmployeeRepo;
 import com.horan.elshamel.personnelmanagement.service.EmpJobsService;
-import com.horan.elshamel.personnelmanagement.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

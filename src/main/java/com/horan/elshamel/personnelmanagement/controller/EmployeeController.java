@@ -2,11 +2,13 @@ package com.horan.elshamel.personnelmanagement.controller;
 
 import com.horan.elshamel.personnelmanagement.model.dto.EmployeeFindDto;
 import com.horan.elshamel.personnelmanagement.model.dto.EmployeeSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.mosaeer.MosaeerSalaryDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpEndEmp;
 import com.horan.elshamel.personnelmanagement.model.entity.Employee;
 import com.horan.elshamel.personnelmanagement.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ByteArrayResource;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -65,6 +69,8 @@ public class EmployeeController {
         return service.findEmployee(id, name, cardId,empType);
     }
 
+
+
 //    @GetMapping("/{id}")
 //    @ResponseStatus(HttpStatus.OK)
 //    @ResponseBody
@@ -109,5 +115,16 @@ public class EmployeeController {
         return ResponseEntity.ok()
                 .headers(headers)
                 .body(resource);
+    }
+
+    @GetMapping("/mosaeer-salary")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<MosaeerSalaryDto> mosaeerSalary(
+            @RequestParam(value = "empType" ,required = false ,defaultValue = "") String empType,
+            @RequestParam(value = "startDate",defaultValue = "2020-09-15") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
+            @RequestParam(value = "endDate",defaultValue = "2025-09-15")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endDate
+            ) {
+        return service.getMosaeerSalary(empType,startDate,endDate);
     }
 }
