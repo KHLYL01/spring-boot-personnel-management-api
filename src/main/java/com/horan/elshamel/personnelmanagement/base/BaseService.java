@@ -10,8 +10,6 @@ public interface BaseService<ID, T> {
 
     T save(T dto);
 
-    T update(ID id,T dto);
-
     void deleteById(ID id);
 
 }

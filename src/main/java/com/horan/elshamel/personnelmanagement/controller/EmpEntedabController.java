@@ -1,8 +1,7 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
-import com.horan.elshamel.personnelmanagement.model.dto.EmpEntedabSearchDto;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpEntedabDetDto;
-import com.horan.elshamel.personnelmanagement.model.entity.EmpEndEmp;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpEntedabSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.det.EmpEntedabDetDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpEntedab;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpEntedabDet;
 import com.horan.elshamel.personnelmanagement.service.EmpEntedabService;
@@ -47,13 +46,6 @@ public class EmpEntedabController {
     @ResponseBody
     public EmpEntedab save(@RequestBody  EmpEntedab dto) {
         return service.save(dto);
-    }
-
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public EmpEntedab update(@PathVariable Long id, @RequestBody  EmpEntedab dto) {
-        return service.update(id,dto);
     }
 
     @DeleteMapping("/{id}")

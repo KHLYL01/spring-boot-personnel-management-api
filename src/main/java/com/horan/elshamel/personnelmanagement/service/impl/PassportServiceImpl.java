@@ -1,7 +1,7 @@
 package com.horan.elshamel.personnelmanagement.service.impl;
 
 import com.horan.elshamel.personnelmanagement.base.BaseServiceImpl;
-import com.horan.elshamel.personnelmanagement.model.dto.PassportSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.PassportSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.Passport;
 import com.horan.elshamel.personnelmanagement.repo.PassportRepo;
 import com.horan.elshamel.personnelmanagement.service.PassportService;

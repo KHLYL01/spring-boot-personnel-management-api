@@ -1,7 +1,6 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
-import com.horan.elshamel.personnelmanagement.model.dto.EmpHolidaysSearchDto;
-import com.horan.elshamel.personnelmanagement.model.entity.EmpEndEmp;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHolidaysSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpHolidays;
 import com.horan.elshamel.personnelmanagement.service.EmpHolidaysService;
 import lombok.RequiredArgsConstructor;
@@ -47,13 +46,6 @@ public class EmpHolidaysController {
     @ResponseBody
     public EmpHolidays save(@RequestBody  EmpHolidays dto) {
         return service.save(dto);
-    }
-
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public EmpHolidays update(@PathVariable Long id, @RequestBody  EmpHolidays dto) {
-        return service.update(id,dto);
     }
 
     @DeleteMapping("/{id}")

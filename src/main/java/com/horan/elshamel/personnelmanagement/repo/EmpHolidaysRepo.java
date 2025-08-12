@@ -1,7 +1,7 @@
 package com.horan.elshamel.personnelmanagement.repo;
 
 import com.horan.elshamel.personnelmanagement.base.BaseRepository;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpHolidaysSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHolidaysSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpHolidays;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface EmpHolidaysRepo extends BaseRepository<EmpHolidays, Long> {
 
-    @Query("SELECT NEW com.horan.elshamel.personnelmanagement.model.dto.EmpHolidaysSearchDto(" +
+    @Query("SELECT NEW com.horan.elshamel.personnelmanagement.model.dto.query.EmpHolidaysSearchDto(" +
             "h.id, h.startDate, e.cardId, e.name, j.name, " +
             "h.holidayType, h.startDateString, h.endDateString, " +
             "h.period, e.empType, h.etemad) " +

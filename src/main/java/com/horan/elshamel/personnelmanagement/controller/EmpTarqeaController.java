@@ -1,7 +1,6 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
-import com.horan.elshamel.personnelmanagement.model.dto.EmpTarqeaSearchDto;
-import com.horan.elshamel.personnelmanagement.model.entity.EmpEndEmp;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpTarqeaSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpTarqea;
 import com.horan.elshamel.personnelmanagement.service.EmpTarqeaService;
 import lombok.RequiredArgsConstructor;
@@ -44,13 +43,6 @@ public class EmpTarqeaController {
     @ResponseBody
     public EmpTarqea save(@RequestBody  EmpTarqea dto) {
         return service.save(dto);
-    }
-
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public EmpTarqea update(@PathVariable Long id, @RequestBody  EmpTarqea dto) {
-        return service.update(id,dto);
     }
 
     @DeleteMapping("/{id}")

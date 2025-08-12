@@ -1,11 +1,11 @@
 package com.horan.elshamel.personnelmanagement.service;
 
-import com.horan.elshamel.personnelmanagement.model.dto.BladiaInfoWithEmpPartInfoDto;
+import com.horan.elshamel.personnelmanagement.model.dto.response.BladiaInfoWithEmpPartInfoResponseDto;
 
 public interface BladiaInfoWithEmpPartInfoService {
 
-    BladiaInfoWithEmpPartInfoDto findAll();
+    BladiaInfoWithEmpPartInfoResponseDto findAll();
 
-    void save(BladiaInfoWithEmpPartInfoDto dto);
+    void save(BladiaInfoWithEmpPartInfoResponseDto dto);
 
 }

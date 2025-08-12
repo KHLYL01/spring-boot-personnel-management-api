@@ -1,9 +1,7 @@
 package com.horan.elshamel.personnelmanagement.repo;
 
 import com.horan.elshamel.personnelmanagement.base.BaseRepository;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpHasmiatDetDto;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpMokhalfatDetDto;
-import com.horan.elshamel.personnelmanagement.model.entity.EmpHasmDet;
+import com.horan.elshamel.personnelmanagement.model.dto.det.EmpMokhalfatDetDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpMokhalfatDet;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -17,7 +15,7 @@ public interface EmpMokhalfatDetRepo extends BaseRepository<EmpMokhalfatDet, Lon
     @Query(value = "SELECT NVL(MAX(e.maxId), 0) + 1 FROM EmpMokhalfatDet e")
     Long getNextId();
 
-    @Query("SELECT NEW com.horan.elshamel.personnelmanagement.model.dto.EmpMokhalfatDetDto(" +
+    @Query("SELECT NEW com.horan.elshamel.personnelmanagement.model.dto.det.EmpMokhalfatDetDto(" +
             "md.maxId,e.id, e.name, e.salary, e.naqlBadal,e.fia, " +
             "e.draga,md.gza) " +
             "FROM EmpMokhalfatDet md " +

@@ -1,7 +1,7 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
-import com.horan.elshamel.personnelmanagement.model.dto.EmpHasmiatDetDto;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpHasmiatSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.det.EmpHasmiatDetDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHasmiatSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpHasmDet;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpHasmiat;
 import com.horan.elshamel.personnelmanagement.service.EmpHasmiatService;
@@ -45,13 +45,6 @@ public class EmpHasmiatController {
     @ResponseBody
     public EmpHasmiat save(@RequestBody  EmpHasmiat dto) {
         return service.save(dto);
-    }
-
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public EmpHasmiat update(@PathVariable Long id, @RequestBody  EmpHasmiat dto) {
-        return service.update(id,dto);
     }
 
     @DeleteMapping("/{id}")

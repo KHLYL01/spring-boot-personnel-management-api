@@ -1,7 +1,6 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
-import com.horan.elshamel.personnelmanagement.model.dto.EmpKashfTepySearchDto;
-import com.horan.elshamel.personnelmanagement.model.entity.EmpEndEmp;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpKashfTepySearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpKashfTepy;
 import com.horan.elshamel.personnelmanagement.service.EmpKashfTepyService;
 import lombok.RequiredArgsConstructor;
@@ -45,13 +44,6 @@ public class EmpKashfTepyController {
     @ResponseBody
     public EmpKashfTepy save(@RequestBody EmpKashfTepy dto) {
         return service.save(dto);
-    }
-
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public EmpKashfTepy update(@PathVariable Long id, @RequestBody EmpKashfTepy dto) {
-        return service.update(id, dto);
     }
 
     @DeleteMapping("/{id}")

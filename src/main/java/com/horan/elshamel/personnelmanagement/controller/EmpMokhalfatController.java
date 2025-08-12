@@ -1,10 +1,7 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
-import com.horan.elshamel.personnelmanagement.model.dto.EmpHasmiatDetDto;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpMokhalfatDetDto;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpMokhalfatSearchDto;
-import com.horan.elshamel.personnelmanagement.model.entity.EmpEndEmp;
-import com.horan.elshamel.personnelmanagement.model.entity.EmpHasmDet;
+import com.horan.elshamel.personnelmanagement.model.dto.det.EmpMokhalfatDetDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpMokhalfatSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpMokhalfat;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpMokhalfatDet;
 import com.horan.elshamel.personnelmanagement.service.EmpMokhalfatService;
@@ -48,13 +45,6 @@ public class EmpMokhalfatController {
     @ResponseBody
     public EmpMokhalfat save(@RequestBody  EmpMokhalfat dto) {
         return service.save(dto);
-    }
-
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public EmpMokhalfat update(@PathVariable Long id, @RequestBody  EmpMokhalfat dto) {
-        return service.update(id,dto);
     }
 
     @DeleteMapping("/{id}")

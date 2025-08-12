@@ -1,7 +1,6 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
-import com.horan.elshamel.personnelmanagement.model.dto.TafweedSearchDto;
-import com.horan.elshamel.personnelmanagement.model.entity.EmpEndEmp;
+import com.horan.elshamel.personnelmanagement.model.dto.query.TafweedSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.Tafweed;
 import com.horan.elshamel.personnelmanagement.service.TafweedService;
 import lombok.RequiredArgsConstructor;
@@ -43,13 +42,6 @@ public class TafweedController {
     @ResponseBody
     public Tafweed save(@RequestBody  Tafweed dto) {
         return service.save(dto);
-    }
-
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public Tafweed update(@PathVariable Long id, @RequestBody  Tafweed dto) {
-        return service.update(id,dto);
     }
 
     @DeleteMapping("/{id}")

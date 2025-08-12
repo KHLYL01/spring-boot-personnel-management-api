@@ -1,7 +1,7 @@
 package com.horan.elshamel.personnelmanagement.service.impl;
 
 import com.horan.elshamel.personnelmanagement.base.BaseServiceImpl;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpEqrarSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpEqrarSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpEqrar;
 import com.horan.elshamel.personnelmanagement.repo.EmpEqrarRepo;
 import com.horan.elshamel.personnelmanagement.service.EmpEqrarService;

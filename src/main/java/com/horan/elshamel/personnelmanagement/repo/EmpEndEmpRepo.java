@@ -1,7 +1,7 @@
 package com.horan.elshamel.personnelmanagement.repo;
 
 import com.horan.elshamel.personnelmanagement.base.BaseRepository;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpEndEmpSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpEndEmpSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpEndEmp;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface EmpEndEmpRepo extends BaseRepository<EmpEndEmp, Long> {
 
-    @Query("SELECT NEW com.horan.elshamel.personnelmanagement.model.dto.EmpEndEmpSearchDto(" +
+    @Query("SELECT NEW com.horan.elshamel.personnelmanagement.model.dto.query.EmpEndEmpSearchDto(" +
             "ee.id, ee.qrarId, ee.qrarDate, " +
             "e.name, ee.endDate) " +
             "FROM EmpEndEmp ee " +

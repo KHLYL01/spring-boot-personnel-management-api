@@ -1,12 +1,10 @@
 package com.horan.elshamel.personnelmanagement.service.impl;
 
 import com.horan.elshamel.personnelmanagement.base.BaseServiceImpl;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpDowraDetDto;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpDowraSearchDto;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpMokhalfatDetDto;
+import com.horan.elshamel.personnelmanagement.model.dto.det.EmpDowraDetDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpDowraSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpDowra;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpDowraDet;
-import com.horan.elshamel.personnelmanagement.model.entity.EmpMokhalfatDet;
 import com.horan.elshamel.personnelmanagement.repo.EmpDowraDetRepo;
 import com.horan.elshamel.personnelmanagement.repo.EmpDowraRepo;
 import com.horan.elshamel.personnelmanagement.service.EmpDowraService;

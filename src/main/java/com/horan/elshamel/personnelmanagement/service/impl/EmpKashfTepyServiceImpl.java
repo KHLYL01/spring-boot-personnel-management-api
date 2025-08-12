@@ -1,7 +1,7 @@
 package com.horan.elshamel.personnelmanagement.service.impl;
 
 import com.horan.elshamel.personnelmanagement.base.BaseServiceImpl;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpKashfTepySearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpKashfTepySearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpKashfTepy;
 import com.horan.elshamel.personnelmanagement.repo.EmpKashfTepyRepo;
 import com.horan.elshamel.personnelmanagement.service.EmpKashfTepyService;

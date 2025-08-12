@@ -1,8 +1,8 @@
 package com.horan.elshamel.personnelmanagement.service.impl;
 
 import com.horan.elshamel.personnelmanagement.base.BaseServiceImpl;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpHasmiatDetDto;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpHasmiatSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.det.EmpHasmiatDetDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHasmiatSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpHasmDet;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpHasmiat;
 import com.horan.elshamel.personnelmanagement.repo.EmpHasmDetRepo;

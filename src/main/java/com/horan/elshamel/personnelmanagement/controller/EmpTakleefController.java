@@ -1,7 +1,7 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
-import com.horan.elshamel.personnelmanagement.model.dto.EmpTakleefDetDto;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpTakleefSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.det.EmpTakleefDetDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpTakleefSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpTakleefDet;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpTakleef;
 import com.horan.elshamel.personnelmanagement.service.EmpTakleefService;
@@ -47,13 +47,6 @@ public class EmpTakleefController {
     @ResponseBody
     public EmpTakleef save(@RequestBody EmpTakleef dto) {
         return service.save(dto);
-    }
-
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public EmpTakleef update(@PathVariable Long id, @RequestBody EmpTakleef dto) {
-        return service.update(id, dto);
     }
 
     @DeleteMapping("/{id}")

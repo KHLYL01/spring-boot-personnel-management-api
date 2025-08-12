@@ -1,7 +1,7 @@
 package com.horan.elshamel.personnelmanagement.repo;
 
 import com.horan.elshamel.personnelmanagement.base.BaseRepository;
-import com.horan.elshamel.personnelmanagement.model.dto.TafweedSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.TafweedSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.Tafweed;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 public interface TafweedRepo extends BaseRepository<Tafweed, Long> {
-    @Query("SELECT NEW com.horan.elshamel.personnelmanagement.model.dto.TafweedSearchDto(" +
+    @Query("SELECT NEW com.horan.elshamel.personnelmanagement.model.dto.query.TafweedSearchDto(" +
             "t.id, e.name, t.startDate, t.endDate, t.subject) " +
             "FROM Tafweed t " +
             "JOIN Employee e ON t.empId = e.id " +

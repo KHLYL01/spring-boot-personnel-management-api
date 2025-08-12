@@ -29,12 +29,6 @@ public class EmpDegreesWorkersController {
         return service.save(dto);
     }
 
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public EmpDegreesWorkers update(@PathVariable Long id, @RequestBody  EmpDegreesWorkers dto) {
-        return service.update(id,dto);
-    }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

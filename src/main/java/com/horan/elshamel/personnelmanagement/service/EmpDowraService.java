@@ -1,12 +1,10 @@
 package com.horan.elshamel.personnelmanagement.service;
 
 import com.horan.elshamel.personnelmanagement.base.BaseService;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpDowraDetDto;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpDowraSearchDto;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpMokhalfatDetDto;
+import com.horan.elshamel.personnelmanagement.model.dto.det.EmpDowraDetDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpDowraSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpDowra;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpDowraDet;
-import com.horan.elshamel.personnelmanagement.model.entity.EmpMokhalfatDet;
 
 import java.util.List;
 

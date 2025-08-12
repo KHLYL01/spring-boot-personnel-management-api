@@ -1,7 +1,7 @@
 package com.horan.elshamel.personnelmanagement.repo;
 
 import com.horan.elshamel.personnelmanagement.base.BaseRepository;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpKashfTepySearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpKashfTepySearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpKashfTepy;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface EmpKashfTepyRepo extends BaseRepository<EmpKashfTepy, Long> {
 
-    @Query("SELECT NEW com.horan.elshamel.personnelmanagement.model.dto.EmpKashfTepySearchDto(" +
+    @Query("SELECT NEW com.horan.elshamel.personnelmanagement.model.dto.query.EmpKashfTepySearchDto(" +
             "kt.id, e.cardId, e.name, j.name, " +
             "kt.requestDateString, kt.employeeStatus, kt.wehdaName) " +
             "FROM EmpKashfTepy kt " +

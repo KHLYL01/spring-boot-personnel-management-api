@@ -1,7 +1,7 @@
 package com.horan.elshamel.personnelmanagement.service;
 
 import com.horan.elshamel.personnelmanagement.base.BaseService;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpTaeenSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpTaeenSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpTaeen;
 
 import java.util.List;

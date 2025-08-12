@@ -1,7 +1,6 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
-import com.horan.elshamel.personnelmanagement.model.dto.PassportSearchDto;
-import com.horan.elshamel.personnelmanagement.model.entity.EmpEndEmp;
+import com.horan.elshamel.personnelmanagement.model.dto.query.PassportSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.Passport;
 import com.horan.elshamel.personnelmanagement.service.PassportService;
 import lombok.RequiredArgsConstructor;
@@ -44,13 +43,6 @@ public class PassportController {
     @ResponseBody
     public Passport save(@RequestBody  Passport dto) {
         return service.save(dto);
-    }
-
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public Passport update(@PathVariable Long id, @RequestBody  Passport dto) {
-        return service.update(id,dto);
     }
 
     @DeleteMapping("/{id}")

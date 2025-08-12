@@ -1,8 +1,8 @@
 package com.horan.elshamel.personnelmanagement.service.impl;
 
 import com.horan.elshamel.personnelmanagement.base.BaseServiceImpl;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpTakleefDetDto;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpTakleefSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.det.EmpTakleefDetDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpTakleefSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpTakleef;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpTakleefDet;
 import com.horan.elshamel.personnelmanagement.repo.EmpTakleefDetRepo;

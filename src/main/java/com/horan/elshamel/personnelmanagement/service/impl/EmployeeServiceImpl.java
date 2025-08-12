@@ -1,8 +1,8 @@
 package com.horan.elshamel.personnelmanagement.service.impl;
 
 import com.horan.elshamel.personnelmanagement.base.BaseServiceImpl;
-import com.horan.elshamel.personnelmanagement.model.dto.EmployeeFindDto;
-import com.horan.elshamel.personnelmanagement.model.dto.EmployeeSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmployeeFindDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmployeeSearchDto;
 import com.horan.elshamel.personnelmanagement.model.dto.mosaeer.GzaSummaryDto;
 import com.horan.elshamel.personnelmanagement.model.dto.mosaeer.HolidayEmployeeDto;
 import com.horan.elshamel.personnelmanagement.model.dto.mosaeer.MosaeerSalaryDto;
@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -55,6 +54,8 @@ public class EmployeeServiceImpl extends BaseServiceImpl<Employee, Long> impleme
 
         if ("".equals(empType)) {
             mosaeerSalaryDtos = repo.getFullReport();
+        } else if ("موظف | مستخدم".equals(empType)) {
+            mosaeerSalaryDtos = repo.getUserAndEmployeeReport();
         } else if ("موظف | مستخدم | عامل بند إجور".equals(empType)) {
             mosaeerSalaryDtos = repo.getUserAndEmployeeAndWorkerBandOjorReport();
         } else if ("عامل بند إجور | عامل بند إجور غير سعودى".equals(empType)) {

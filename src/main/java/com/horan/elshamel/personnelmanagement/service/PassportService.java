@@ -1,7 +1,7 @@
 package com.horan.elshamel.personnelmanagement.service;
 
 import com.horan.elshamel.personnelmanagement.base.BaseService;
-import com.horan.elshamel.personnelmanagement.model.dto.PassportSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.PassportSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.Passport;
 
 import java.util.List;

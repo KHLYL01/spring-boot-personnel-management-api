@@ -1,8 +1,8 @@
 package com.horan.elshamel.personnelmanagement.service;
 
 import com.horan.elshamel.personnelmanagement.base.BaseService;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpEntedabSearchDto;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpEntedabDetDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpEntedabSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.det.EmpEntedabDetDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpEntedab;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpEntedabDet;
 

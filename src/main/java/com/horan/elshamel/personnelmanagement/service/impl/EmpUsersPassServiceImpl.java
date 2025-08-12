@@ -1,6 +1,6 @@
 package com.horan.elshamel.personnelmanagement.service.impl;
 
-import com.horan.elshamel.personnelmanagement.model.dto.UserDto;
+import com.horan.elshamel.personnelmanagement.model.dto.response.UserPassResponseDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpUsersPass;
 import com.horan.elshamel.personnelmanagement.repo.EmpUsersPassRepo;
 import com.horan.elshamel.personnelmanagement.service.EmpUsersPassService;
@@ -22,7 +22,7 @@ public class EmpUsersPassServiceImpl implements EmpUsersPassService {
     }
 
     @Override
-    public List<UserDto> findAllUsers() {
+    public List<UserPassResponseDto> findAllUsers() {
         return repo.findAllUsers();
     }
 

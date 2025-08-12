@@ -1,13 +1,12 @@
 package com.horan.elshamel.personnelmanagement.service;
 
 import com.horan.elshamel.personnelmanagement.base.BaseService;
-import com.horan.elshamel.personnelmanagement.model.dto.EmployeeFindDto;
-import com.horan.elshamel.personnelmanagement.model.dto.EmployeeSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmployeeFindDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmployeeSearchDto;
 import com.horan.elshamel.personnelmanagement.model.dto.mosaeer.MosaeerSalaryDto;
 import com.horan.elshamel.personnelmanagement.model.entity.Employee;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 

@@ -10,18 +10,11 @@ import java.util.List;
 public abstract class BaseServiceImpl<T, ID extends Number> implements BaseService<ID,T> {
 
     private BaseRepository<T, ID> repo;
-    private BaseMapper<T, ID> mapper;
 
     @Autowired
     void RepoSetter(ObjectProvider<BaseRepository<T, ID>> repo) {
         this.repo = repo.getIfAvailable();
     }
-
-    @Autowired
-    void MapperSetter(ObjectProvider<BaseMapper<T, ID>> mapper) {
-        this.mapper = mapper.getIfAvailable();
-    }
-
 
     @Override
     public List<T> findAll() {
@@ -34,16 +27,10 @@ public abstract class BaseServiceImpl<T, ID extends Number> implements BaseServi
     }
 
     @Override
-    public T save(T request_dto) {
-        return repo.save(request_dto);
-    }
-
-    @Override
-    public T update(ID id, T request_dto) {
-        T entity = findById(id);
-        mapper.toEntity(entity, request_dto);
+    public T save(T entity) {
         return repo.save(entity);
     }
+
 
     @Override
     public void deleteById(ID id) {

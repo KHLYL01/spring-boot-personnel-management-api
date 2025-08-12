@@ -1,7 +1,6 @@
 package com.horan.elshamel.personnelmanagement.repo;
 
-import com.horan.elshamel.personnelmanagement.base.BaseRepository;
-import com.horan.elshamel.personnelmanagement.model.dto.UserDto;
+import com.horan.elshamel.personnelmanagement.model.dto.response.UserPassResponseDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpUsersPass;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpUsersPassKey;
 import jakarta.transaction.Transactional;
@@ -29,9 +28,9 @@ public interface EmpUsersPassRepo extends JpaRepository<EmpUsersPass, EmpUsersPa
     void deleteAllById(@Param("id") BigDecimal id);
 
 
-    @Query("SELECT DISTINCT New com.horan.elshamel.personnelmanagement.model.dto.UserDto(" +
+    @Query("SELECT DISTINCT New com.horan.elshamel.personnelmanagement.model.dto.response.UserPassResponseDto(" +
            "e.key.id,e.name,e.pass,e.empName)" +
            "FROM EmpUsersPass e ORDER BY e.key.id ASC")
-    List<UserDto> findAllUsers();
+    List<UserPassResponseDto> findAllUsers();
 
 }

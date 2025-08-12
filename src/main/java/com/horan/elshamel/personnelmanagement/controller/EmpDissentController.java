@@ -29,13 +29,6 @@ public class EmpDissentController {
         return service.save(dto);
     }
 
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public EmpDissent update(@PathVariable Long id, @RequestBody EmpDissent dto) {
-        return service.update(id, dto);
-    }
-
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @ResponseBody

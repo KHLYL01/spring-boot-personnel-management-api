@@ -30,13 +30,6 @@ public class EmpDowraBadalController {
         return service.save(dto);
     }
 
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public EmpDowraBadal update(@PathVariable Long id, @RequestBody  EmpDowraBadal dto) {
-        return service.update(id,dto);
-    }
-
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @ResponseBody

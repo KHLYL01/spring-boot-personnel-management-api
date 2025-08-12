@@ -1,6 +1,6 @@
 package com.horan.elshamel.personnelmanagement.service;
 
-import com.horan.elshamel.personnelmanagement.model.dto.UserDto;
+import com.horan.elshamel.personnelmanagement.model.dto.response.UserPassResponseDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpUsersPass;
 
 import java.math.BigDecimal;
@@ -10,7 +10,7 @@ public interface EmpUsersPassService{
 
     BigDecimal getNextDetId();
 
-    List<UserDto> findAllUsers();
+    List<UserPassResponseDto> findAllUsers();
 
     List<EmpUsersPass> findAllById(BigDecimal id);
 

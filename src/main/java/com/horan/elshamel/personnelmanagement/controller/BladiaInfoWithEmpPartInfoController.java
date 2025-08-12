@@ -1,6 +1,6 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
-import com.horan.elshamel.personnelmanagement.model.dto.BladiaInfoWithEmpPartInfoDto;
+import com.horan.elshamel.personnelmanagement.model.dto.response.BladiaInfoWithEmpPartInfoResponseDto;
 import com.horan.elshamel.personnelmanagement.service.BladiaInfoWithEmpPartInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,14 +16,14 @@ public class BladiaInfoWithEmpPartInfoController {
     @GetMapping
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    final BladiaInfoWithEmpPartInfoDto findAll() {
+    final BladiaInfoWithEmpPartInfoResponseDto findAll() {
         return service.findAll();
     }
 
     @PostMapping
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    final void save(@RequestBody BladiaInfoWithEmpPartInfoDto dto) {
+    final void save(@RequestBody BladiaInfoWithEmpPartInfoResponseDto dto) {
         service.save(dto);
     }
 

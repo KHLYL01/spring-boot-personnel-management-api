@@ -48,13 +48,6 @@ public class EmpPartsController {
         return service.save(dto);
     }
 
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public EmpParts update(@PathVariable Long id, @RequestBody EmpParts dto) {
-        return service.update(id, dto);
-    }
-
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @ResponseBody

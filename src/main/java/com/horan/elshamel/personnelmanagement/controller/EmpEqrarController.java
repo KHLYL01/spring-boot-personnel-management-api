@@ -1,6 +1,6 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
-import com.horan.elshamel.personnelmanagement.model.dto.EmpEqrarSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpEqrarSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpEqrar;
 import com.horan.elshamel.personnelmanagement.service.EmpEqrarService;
 import lombok.RequiredArgsConstructor;
@@ -42,13 +42,6 @@ public class EmpEqrarController {
     @ResponseBody
     public EmpEqrar save(@RequestBody  EmpEqrar dto) {
         return service.save(dto);
-    }
-
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public EmpEqrar update(@PathVariable Long id, @RequestBody  EmpEqrar dto) {
-        return service.update(id,dto);
     }
 
     @DeleteMapping("/{id}")

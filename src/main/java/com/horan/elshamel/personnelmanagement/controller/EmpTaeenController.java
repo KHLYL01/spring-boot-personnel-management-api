@@ -1,7 +1,6 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
-import com.horan.elshamel.personnelmanagement.model.dto.EmpTaeenSearchDto;
-import com.horan.elshamel.personnelmanagement.model.entity.EmpEndEmp;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpTaeenSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpTaeen;
 import com.horan.elshamel.personnelmanagement.service.EmpTaeenService;
 import lombok.RequiredArgsConstructor;
@@ -43,13 +42,6 @@ public class EmpTaeenController {
     @ResponseBody
     public EmpTaeen save(@RequestBody  EmpTaeen dto) {
         return service.save(dto);
-    }
-
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public EmpTaeen update(@PathVariable Long id, @RequestBody  EmpTaeen dto) {
-        return service.update(id,dto);
     }
 
     @DeleteMapping("/{id}")

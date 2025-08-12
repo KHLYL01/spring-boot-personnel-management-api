@@ -1,7 +1,7 @@
 package com.horan.elshamel.personnelmanagement.repo;
 
 import com.horan.elshamel.personnelmanagement.base.BaseRepository;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpTaeenSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpTaeenSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpTaeen;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 public interface EmpTaeenRepo extends BaseRepository<EmpTaeen, Long> {
-    @Query("SELECT NEW com.horan.elshamel.personnelmanagement.model.dto.EmpTaeenSearchDto(" +
+    @Query("SELECT NEW com.horan.elshamel.personnelmanagement.model.dto.query.EmpTaeenSearchDto(" +
             "t.id, t.qrarId, t.qrarDate, " +
             "e.name, t.socialNumber, t.mKhetabDate) " +
             "FROM EmpTaeen t " +

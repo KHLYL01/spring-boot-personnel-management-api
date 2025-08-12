@@ -1,9 +1,8 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
-import com.horan.elshamel.personnelmanagement.model.dto.EmployeeFindDto;
-import com.horan.elshamel.personnelmanagement.model.dto.EmployeeSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmployeeFindDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmployeeSearchDto;
 import com.horan.elshamel.personnelmanagement.model.dto.mosaeer.MosaeerSalaryDto;
-import com.horan.elshamel.personnelmanagement.model.entity.EmpEndEmp;
 import com.horan.elshamel.personnelmanagement.model.entity.Employee;
 import com.horan.elshamel.personnelmanagement.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -83,14 +81,6 @@ public class EmployeeController {
     @ResponseBody
     public Employee save(@RequestBody Employee dto) {
         return service.save(dto);
-    }
-
-
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public Employee update(@PathVariable Long id, @RequestBody Employee dto) {
-        return service.update(id, dto);
     }
 
     @DeleteMapping("/{id}")

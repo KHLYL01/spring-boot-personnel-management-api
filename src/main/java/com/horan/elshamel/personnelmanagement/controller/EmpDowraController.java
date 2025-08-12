@@ -1,7 +1,7 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
-import com.horan.elshamel.personnelmanagement.model.dto.EmpDowraSearchDto;
-import com.horan.elshamel.personnelmanagement.model.dto.EmpDowraDetDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpDowraSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.det.EmpDowraDetDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpDowra;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpDowraDet;
 import com.horan.elshamel.personnelmanagement.service.EmpDowraService;
@@ -45,13 +45,6 @@ public class EmpDowraController {
     @ResponseBody
     public EmpDowra save(@RequestBody  EmpDowra dto) {
         return service.save(dto);
-    }
-
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public EmpDowra update(@PathVariable Long id, @RequestBody  EmpDowra dto) {
-        return service.update(id,dto);
     }
 
     @DeleteMapping("/{id}")
