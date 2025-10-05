@@ -1,6 +1,8 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
 import com.horan.elshamel.personnelmanagement.model.dto.det.EmpMokhalfatDetDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHasmiatReportDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpMokhalfatReportDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpMokhalfatSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpMokhalfat;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpMokhalfatDet;
@@ -9,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -31,6 +34,17 @@ public class EmpMokhalfatController {
     public List<EmpMokhalfatSearchDto> searchMokhalfat(@RequestParam(required = false) String name,
                                                    @RequestParam(required = false) String cardId) {
         return service.searchMokhalfat(name,cardId);
+    }
+
+    @GetMapping("/report")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<EmpMokhalfatReportDto> reportMokhalfat(
+            @RequestParam(required = false) boolean all,
+            @RequestParam(required = false) Long empId,
+            @RequestParam(required = false) Date fromDate,
+            @RequestParam(required = false) Date toDate) {
+        return service.reportMokhalfat(all, empId, fromDate, toDate);
     }
 
     @GetMapping("/{id}")

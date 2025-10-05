@@ -10,4 +10,6 @@ public interface TafweedService extends BaseService<Long,Tafweed> {
 
 
     List<TafweedSearchDto> searchTafweed(Long empId);
+
+    List<TafweedSearchDto> reportTafweed(Long empId);
 }

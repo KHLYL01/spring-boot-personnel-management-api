@@ -2,6 +2,7 @@ package com.horan.elshamel.personnelmanagement.service.impl;
 
 import com.horan.elshamel.personnelmanagement.base.BaseServiceImpl;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmployeeFindDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmployeeReportDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmployeeSearchDto;
 import com.horan.elshamel.personnelmanagement.model.dto.mosaeer.GzaSummaryDto;
 import com.horan.elshamel.personnelmanagement.model.dto.mosaeer.HolidayEmployeeDto;
@@ -41,6 +42,15 @@ public class EmployeeServiceImpl extends BaseServiceImpl<Employee, Long> impleme
     @Override
     public List<EmployeeSearchDto> searchEmployee(Long id, String name, String cardId, Long jobId, Long partId, String fia, BigDecimal draga, String jobState, String empType) {
         return repo.searchEmployee(id, name, cardId, jobId, partId, fia, draga, jobState, empType);
+    }
+
+    @Override
+    public List<EmployeeReportDto> reportEmployee(Long partId, String jobState, String empType) {
+
+        if(empType.equals("موظف") || empType.equals("مستخدم")){
+            return repo.reportEmployee(partId,jobState,empType);
+        }
+        return repo.reportEmployee(null, jobState, empType);
     }
 
     @Override

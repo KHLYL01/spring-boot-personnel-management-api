@@ -1,7 +1,9 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpEntedabReportDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpEntedabSearchDto;
 import com.horan.elshamel.personnelmanagement.model.dto.det.EmpEntedabDetDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpTakleefReportDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpEntedab;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpEntedabDet;
 import com.horan.elshamel.personnelmanagement.service.EmpEntedabService;
@@ -9,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -32,6 +35,15 @@ public class EmpEntedabController {
                                                    @RequestParam(required = false) String cardId,
                                                    @RequestParam(required = false) String entedabPlace) {
         return service.entedabSearch(employeeName,cardId,entedabPlace);
+    }
+    @GetMapping("/report")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<EmpEntedabReportDto> entedabReport(
+            @RequestParam(required = false) Long empId,
+            @RequestParam(required = false) Date fromDate,
+            @RequestParam(required = false) Date toDate) {
+        return service.entedabReport(empId, fromDate, toDate);
     }
 
     @GetMapping("/{id}")

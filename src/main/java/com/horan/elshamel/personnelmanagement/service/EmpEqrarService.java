@@ -10,5 +10,6 @@ public interface EmpEqrarService extends BaseService<Long,EmpEqrar> {
 
 
     List<EmpEqrarSearchDto> searchEqrar(String name);
+    List<EmpEqrarSearchDto> reportEqrar(String name);
 
 }

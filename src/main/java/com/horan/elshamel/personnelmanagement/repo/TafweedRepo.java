@@ -19,4 +19,12 @@ public interface TafweedRepo extends BaseRepository<Tafweed, Long> {
     List<TafweedSearchDto> searchTafweed(
             @Param("empId") Long empId);
 
+    @Query("SELECT NEW com.horan.elshamel.personnelmanagement.model.dto.query.TafweedSearchDto(" +
+            "t.id, e.name, t.startDate, t.endDate, t.subject) " +
+            "FROM Tafweed t " +
+            "JOIN Employee e ON t.empId = e.id " +
+            "WHERE (:empId IS NULL OR t.empId = :empId)")
+    List<TafweedSearchDto> reportTafweed(
+            @Param("empId") Long empId);
+
 }

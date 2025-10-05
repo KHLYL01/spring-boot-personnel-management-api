@@ -21,4 +21,14 @@ public interface EmpEndEmpRepo extends BaseRepository<EmpEndEmp, Long> {
     List<EmpEndEmpSearchDto> searchEndEmp(
             @Param("name") String name);
 
+
+    @Query("SELECT NEW com.horan.elshamel.personnelmanagement.model.dto.query.EmpEndEmpSearchDto(" +
+            "ee.id, ee.qrarId, ee.qrarDate, " +
+            "e.name, ee.endDate) " +
+            "FROM EmpEndEmp ee " +
+            "LEFT JOIN Employee e ON ee.empId = e.id " +
+            "WHERE (:name IS NULL OR e.name LIKE %:name%)")
+    List<EmpEndEmpSearchDto> reportEndEmp(
+            @Param("name") String name);
+
 }

@@ -37,6 +37,13 @@ public class EmpEqrarController {
         return service.searchEqrar(name);
     }
 
+    @GetMapping("/report")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<EmpEqrarSearchDto> reportEqrar(@RequestParam(required = false) String name) {
+        return service.searchEqrar(name);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody

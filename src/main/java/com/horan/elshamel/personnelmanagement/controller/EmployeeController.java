@@ -1,6 +1,7 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmployeeFindDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmployeeReportDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmployeeSearchDto;
 import com.horan.elshamel.personnelmanagement.model.dto.mosaeer.MosaeerSalaryDto;
 import com.horan.elshamel.personnelmanagement.model.entity.Employee;
@@ -54,6 +55,16 @@ public class EmployeeController {
             @RequestParam(value = "jobState", required = false) String jobState,
             @RequestParam(value = "empType", required = false) String empType) {
         return service.searchEmployee(id, name, cardId, jobId, partId, fia, draga, jobState, empType);
+    }
+
+    @GetMapping("/report")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<EmployeeReportDto> reportEmployee(
+            @RequestParam(value = "partId", required = false) Long partId,
+            @RequestParam(value = "jobState", required = false) String jobState,
+            @RequestParam(value = "empType", required = false) String empType) {
+        return service.reportEmployee(partId, jobState, empType);
     }
 
     @GetMapping("/find")

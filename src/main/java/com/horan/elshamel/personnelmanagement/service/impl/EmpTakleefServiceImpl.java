@@ -2,6 +2,7 @@ package com.horan.elshamel.personnelmanagement.service.impl;
 
 import com.horan.elshamel.personnelmanagement.base.BaseServiceImpl;
 import com.horan.elshamel.personnelmanagement.model.dto.det.EmpTakleefDetDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpTakleefReportDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpTakleefSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpTakleef;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpTakleefDet;
@@ -11,6 +12,7 @@ import com.horan.elshamel.personnelmanagement.service.EmpTakleefService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -23,6 +25,11 @@ public class EmpTakleefServiceImpl extends BaseServiceImpl<EmpTakleef,Long> impl
     @Override
     public List<EmpTakleefSearchDto> searchTakleef(String name, String cardId, String place) {
         return repo.searchOvertime(name,cardId,place);
+    }
+
+    @Override
+    public List<EmpTakleefReportDto> reportTakleef(boolean all,Long empId, Date fromDate, Date toDate) {
+        return repo.reportOvertime(all,empId, fromDate, toDate);
     }
 
     @Override

@@ -30,6 +30,13 @@ public class EmpEndEmpController {
         return service.searchEndEmp(name);
     }
 
+    @GetMapping("/report")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<EmpEndEmpSearchDto> reportEndEmp(@RequestParam(required = false) String name) {
+        return service.reportEndEmp(name);
+    }
+
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
@@ -40,7 +47,7 @@ public class EmpEndEmpController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public EmpEndEmp save(@RequestBody  EmpEndEmp dto) {
+    public EmpEndEmp save(@RequestBody EmpEndEmp dto) {
         return service.save(dto);
     }
 

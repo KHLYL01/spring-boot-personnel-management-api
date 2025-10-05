@@ -1,7 +1,9 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
 import com.horan.elshamel.personnelmanagement.model.dto.det.EmpHasmiatDetDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHasmiatReportDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHasmiatSearchDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpTakleefReportDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpHasmDet;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpHasmiat;
 import com.horan.elshamel.personnelmanagement.service.EmpHasmiatService;
@@ -9,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -31,6 +34,17 @@ public class EmpHasmiatController {
     public List<EmpHasmiatSearchDto> searchHasmiat(@RequestParam(required = false) String name,
                                                    @RequestParam(required = false) String cardId) {
         return service.searchHasmiat(name, cardId);
+    }
+
+    @GetMapping("/report")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<EmpHasmiatReportDto> reportHasmiat(
+            @RequestParam(required = false) boolean all,
+            @RequestParam(required = false) Long empId,
+            @RequestParam(required = false) Date fromDate,
+            @RequestParam(required = false) Date toDate) {
+        return service.reportHasmiat(all, empId, fromDate, toDate);
     }
 
     @GetMapping("/{id}")

@@ -21,6 +21,11 @@ public class EmpEqrarServiceImpl extends BaseServiceImpl<EmpEqrar, Long> impleme
         return repo.searchEqrar(name);
     }
 
+    @Override
+    public List<EmpEqrarSearchDto> reportEqrar(String name) {
+        return repo.reportEqrar(name);
+    }
+
 
 //
 //    @Override

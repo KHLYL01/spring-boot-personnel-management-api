@@ -21,4 +21,13 @@ public interface EmpEqrarRepo extends BaseRepository<EmpEqrar, Long> {
             @Param("name") String name
     );
 
+    @Query("SELECT NEW com.horan.elshamel.personnelmanagement.model.dto.query.EmpEqrarSearchDto(" +
+            "e.id,e.decisionName,e.decisionDate,e.decisionPlace, " +
+            "e.letterNumber,e.letterName,e.letterDate) " +
+            "FROM EmpEqrar e " +
+            "WHERE (:name IS NULL OR e.decisionName LIKE %:name%) ")
+    List<EmpEqrarSearchDto> reportEqrar(
+            @Param("name") String name
+    );
+
 }

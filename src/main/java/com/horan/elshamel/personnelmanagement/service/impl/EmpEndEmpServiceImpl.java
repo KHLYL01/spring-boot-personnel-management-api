@@ -21,6 +21,11 @@ public class EmpEndEmpServiceImpl extends BaseServiceImpl<EmpEndEmp, Long> imple
         return repo.searchEndEmp(name);
     }
 
+    @Override
+    public List<EmpEndEmpSearchDto> reportEndEmp(String name) {
+        return repo.reportEndEmp(name);
+    }
+
 
 //
 //    @Override

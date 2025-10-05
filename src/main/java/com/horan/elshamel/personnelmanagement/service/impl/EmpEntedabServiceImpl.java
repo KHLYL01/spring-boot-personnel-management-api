@@ -2,6 +2,7 @@ package com.horan.elshamel.personnelmanagement.service.impl;
 
 import com.horan.elshamel.personnelmanagement.base.BaseServiceImpl;
 import com.horan.elshamel.personnelmanagement.model.dto.det.EmpEntedabDetDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpEntedabReportDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpEntedabSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpEntedab;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpEntedabDet;
@@ -11,6 +12,7 @@ import com.horan.elshamel.personnelmanagement.service.EmpEntedabService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -23,6 +25,19 @@ public class EmpEntedabServiceImpl extends BaseServiceImpl<EmpEntedab,Long> impl
     @Override
     public List<EmpEntedabSearchDto> entedabSearch(String employeeName, String cardId, String entedabPlace) {
         return repo.entedabSearch(employeeName,cardId,entedabPlace);
+    }
+
+    @Override
+    public List<EmpEntedabReportDto> entedabReport(Long empId, Date fromDate, Date toDate) {
+
+        List<EmpEntedabReportDto> dtos = repo.entedabReport(empId,fromDate,toDate);
+
+        for (EmpEntedabReportDto dto : dtos) {
+            dto.setPrevPeriod(repo.sumPeriod(dto.getEmpId(),fromDate,dto.getDateBeginGo()));
+            dto.setSumPeriod(60 -dto.getPeriod());
+        }
+
+        return dtos;
     }
 
     @Override

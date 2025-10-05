@@ -1,6 +1,7 @@
 package com.horan.elshamel.personnelmanagement.service.impl;
 
 import com.horan.elshamel.personnelmanagement.base.BaseServiceImpl;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpKashfTepyReportDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpKashfTepySearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpKashfTepy;
 import com.horan.elshamel.personnelmanagement.repo.EmpKashfTepyRepo;
@@ -8,6 +9,7 @@ import com.horan.elshamel.personnelmanagement.service.EmpKashfTepyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -19,6 +21,18 @@ public class EmpKashfTepyServiceImpl extends BaseServiceImpl<EmpKashfTepy, Long>
     @Override
     public List<EmpKashfTepySearchDto> searchKashfTepy(String name, String cardId, String empType) {
         return repo.searchKashfTepy(name, cardId, empType);
+    }
+
+    @Override
+    public List<EmpKashfTepyReportDto> reportKashfTepy(boolean all, Long empId, Date fromDate, Date toDate) {
+        List<EmpKashfTepyReportDto> dtos =  repo.reportKashfTepy(all, empId, fromDate, toDate);
+
+        for (EmpKashfTepyReportDto dto : dtos) {
+            if(dto.getEmployeeStatus().equals("قائم بالعمل حتى تاريخه")){
+                dto.setDatEnketa3("");
+            }
+        }
+        return dtos;
     }
 
 //

@@ -9,5 +9,6 @@ import java.util.List;
 public interface EmpEndEmpService extends BaseService<Long,EmpEndEmp> {
 
     List<EmpEndEmpSearchDto> searchEndEmp(String name);
+    List<EmpEndEmpSearchDto> reportEndEmp(String name);
 
 }

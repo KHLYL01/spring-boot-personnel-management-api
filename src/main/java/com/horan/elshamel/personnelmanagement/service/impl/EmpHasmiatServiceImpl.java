@@ -2,6 +2,7 @@ package com.horan.elshamel.personnelmanagement.service.impl;
 
 import com.horan.elshamel.personnelmanagement.base.BaseServiceImpl;
 import com.horan.elshamel.personnelmanagement.model.dto.det.EmpHasmiatDetDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHasmiatReportDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHasmiatSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpHasmDet;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpHasmiat;
@@ -11,6 +12,7 @@ import com.horan.elshamel.personnelmanagement.service.EmpHasmiatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -23,6 +25,11 @@ public class EmpHasmiatServiceImpl extends BaseServiceImpl<EmpHasmiat,Long> impl
     @Override
     public List<EmpHasmiatSearchDto> searchHasmiat(String name, String cardId) {
         return repo.searchHasmiat(name, cardId);
+    }
+
+    @Override
+    public List<EmpHasmiatReportDto> reportHasmiat(boolean all, Long empId, Date fromDate, Date toDate) {
+        return repo.reportHasmiat(all, empId, fromDate, toDate);
     }
 
     @Override

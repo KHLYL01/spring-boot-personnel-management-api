@@ -1,14 +1,17 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
 import com.horan.elshamel.personnelmanagement.model.dto.det.EmpTakleefDetDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpTakleefReportDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpTakleefSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpTakleefDet;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpTakleef;
+import com.horan.elshamel.personnelmanagement.repo.EmpTakleefRepo;
 import com.horan.elshamel.personnelmanagement.service.EmpTakleefService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -33,6 +36,17 @@ public class EmpTakleefController {
                                                    @RequestParam(required = false) String cardId,
                                                    @RequestParam(required = false) String place) {
         return service.searchTakleef(name,cardId,place);
+    }
+
+    @GetMapping("/report")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<EmpTakleefReportDto> reportTakleef(
+                                                   @RequestParam(required = false) boolean all,
+                                                   @RequestParam(required = false) Long empId,
+                                                   @RequestParam(required = false) Date fromDate,
+                                                   @RequestParam(required = false) Date toDate) {
+        return service.reportTakleef(all, empId, fromDate, toDate);
     }
 
     @GetMapping("/{id}")

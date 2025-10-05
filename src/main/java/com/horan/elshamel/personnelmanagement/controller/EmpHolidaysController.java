@@ -1,5 +1,7 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHasmiatReportDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHolidaysReportDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHolidaysSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpHolidays;
 import com.horan.elshamel.personnelmanagement.service.EmpHolidaysService;
@@ -7,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -32,6 +36,21 @@ public class EmpHolidaysController {
                                                     @RequestParam(required = false) String empType,
                                                     @RequestParam(required = false) Integer holidayType) {
         return service.searchHolidays(empId, name, cardId, empType, holidayType);
+    }
+
+    @GetMapping("/report")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<EmpHolidaysReportDto> reportHolidays(
+            @RequestParam(required = false) boolean all,
+            @RequestParam(required = false) Long empId,
+            @RequestParam(required = false) Date fromDate,
+            @RequestParam(required = false) Date toDate,
+            @RequestParam(required = false) BigDecimal fromPeriod,
+            @RequestParam(required = false) BigDecimal toPeriod,
+            @RequestParam(required = false) Integer holidayType
+            ) {
+        return service.reportHolidays(all, empId, fromDate, toDate, fromPeriod, toPeriod, holidayType);
     }
 
     @GetMapping("/{id}")

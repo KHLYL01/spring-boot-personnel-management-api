@@ -21,6 +21,11 @@ public class TafweedServiceImpl extends BaseServiceImpl<Tafweed, Long> implement
         return repo.searchTafweed(empId);
     }
 
+    @Override
+    public List<TafweedSearchDto> reportTafweed(Long empId) {
+        return repo.reportTafweed(empId);
+    }
+
 
 //
 //    @Override

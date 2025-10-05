@@ -1,5 +1,7 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHasmiatReportDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpMobashraReportDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpMobashraSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpMobashra;
 import com.horan.elshamel.personnelmanagement.service.EmpMobashraService;
@@ -7,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -31,6 +34,18 @@ public class EmpMobashraController {
                                                      @RequestParam(required = false) String empType) {
         return service.searchMobashra(name, cardId, empType);
     }
+
+    @GetMapping("/report")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<EmpMobashraReportDto> reportMobashra(
+            @RequestParam(required = false) boolean all,
+            @RequestParam(required = false) Long empId,
+            @RequestParam(required = false) Date fromDate,
+            @RequestParam(required = false) Date toDate) {
+        return service.reportMobashra(all, empId, fromDate, toDate);
+    }
+
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)

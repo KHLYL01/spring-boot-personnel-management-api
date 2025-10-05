@@ -2,6 +2,7 @@ package com.horan.elshamel.personnelmanagement.repo;
 
 import com.horan.elshamel.personnelmanagement.base.BaseRepository;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmployeeFindDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmployeeReportDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmployeeSearchDto;
 import com.horan.elshamel.personnelmanagement.model.dto.mosaeer.GzaSummaryDto;
 import com.horan.elshamel.personnelmanagement.model.dto.mosaeer.HolidayEmployeeDto;
@@ -43,7 +44,6 @@ public interface EmployeeRepo extends BaseRepository<Employee, Long> {
             @Param("draga") BigDecimal draga,
             @Param("jobState") String jobState,
             @Param("empType") String empType);
-
 
     @Query("SELECT NEW com.horan.elshamel.personnelmanagement.model.dto.query.EmployeeFindDto(" +
            "e.id, e.name, e.fia,e.draga,e.salary, e.naqlBadal, e.inEntedabBadal, e.empType, " +
@@ -160,6 +160,22 @@ public interface EmployeeRepo extends BaseRepository<Employee, Long> {
             @Param("toDate") Date toDate
     );
 
+
+    @Query("SELECT NEW com.horan.elshamel.personnelmanagement.model.dto.query.EmployeeReportDto(" +
+           "e.id, e.name,p.name, e.fia, e.jobNo, e.draga, j.name, e.jobState, e.cardId, " +
+           "e.bok, e.datBok, e.datWork, e.datJob, e.education, e.salary) " +
+           "FROM Employee e " +
+           "JOIN EmpJobs j ON e.jobId = j.id " +
+           "JOIN EmpParts p ON e.partId = p.id " +
+           "WHERE(:partId IS NULL OR p.id = :partId) " +
+           "AND (:jobState IS NULL OR e.jobState = :jobState) " +
+           "AND (:empType IS NULL OR e.empType LIKE %:empType%)" +
+           "ORDER BY e.fia,e.jobNo,e.draga")
+    List<EmployeeReportDto> reportEmployee(
+            @Param("partId") Long partId,
+            @Param("jobState") String jobState,
+            @Param("empType") String empType
+    );
 
 
 }

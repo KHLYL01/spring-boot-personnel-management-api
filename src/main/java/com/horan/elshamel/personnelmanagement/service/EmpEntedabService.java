@@ -1,17 +1,21 @@
 package com.horan.elshamel.personnelmanagement.service;
 
 import com.horan.elshamel.personnelmanagement.base.BaseService;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpEntedabReportDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpEntedabSearchDto;
 import com.horan.elshamel.personnelmanagement.model.dto.det.EmpEntedabDetDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpEntedab;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpEntedabDet;
 
+import java.util.Date;
 import java.util.List;
 
 public interface EmpEntedabService extends BaseService<Long,EmpEntedab> {
 
 
     List<EmpEntedabSearchDto> entedabSearch(String employeeName, String cardId, String entedabPlace);
+
+    List<EmpEntedabReportDto> entedabReport(Long empId, Date fromDate, Date toDate);
 
     List<EmpEntedabDetDto> getEntedabDetByEntedabId(Long entedabId);
 

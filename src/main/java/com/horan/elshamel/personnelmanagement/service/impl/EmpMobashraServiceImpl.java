@@ -1,6 +1,7 @@
 package com.horan.elshamel.personnelmanagement.service.impl;
 
 import com.horan.elshamel.personnelmanagement.base.BaseServiceImpl;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpMobashraReportDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpMobashraSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpMobashra;
 import com.horan.elshamel.personnelmanagement.repo.EmpMobashraRepo;
@@ -8,6 +9,7 @@ import com.horan.elshamel.personnelmanagement.service.EmpMobashraService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -19,6 +21,11 @@ public class EmpMobashraServiceImpl extends BaseServiceImpl<EmpMobashra, Long> i
     @Override
     public List<EmpMobashraSearchDto> searchMobashra(String name, String cardId, String empType) {
         return repo.searchMobashra(name, cardId, empType);
+    }
+
+    @Override
+    public List<EmpMobashraReportDto> reportMobashra(boolean all, Long empId, Date fromDate, Date toDate) {
+        return repo.reportMobashra(all, empId, fromDate, toDate);
     }
 
 
