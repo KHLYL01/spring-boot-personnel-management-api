@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @RestController
@@ -16,12 +17,12 @@ public class ActionsController {
 
     private final ActionsService service;
 
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public List<Actions> findAll() {
-        return service.findAll();
-    }
+//    @GetMapping
+//    @ResponseStatus(HttpStatus.OK)
+//    @ResponseBody
+//    public List<Actions> findAll() {
+//        return service.findAll();
+//    }
 
     @GetMapping("/search")
     @ResponseStatus(HttpStatus.OK)
@@ -38,24 +39,26 @@ public class ActionsController {
         return service.search(id, username, type, action, all, fromDate, toDate);
     }
 
-    @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public Actions findById(@PathVariable Long id) {
-        return service.findById(id);
-    }
+//    @GetMapping("/{id}")
+//    @ResponseStatus(HttpStatus.OK)
+//    @ResponseBody
+//    public Actions findById(@PathVariable Long id) {
+//        return service.findById(id);
+//    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public Actions save(@RequestBody Actions dto) {
+        dto.setDat(LocalDate.now());
+        dto.setTim(LocalTime.now());
         return service.save(dto);
     }
 
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @ResponseBody
-    public void delete(@PathVariable long id) {
-        service.deleteById(id);
-    }
+//    @DeleteMapping("/{id}")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    @ResponseBody
+//    public void delete(@PathVariable long id) {
+//        service.deleteById(id);
+//    }
 }

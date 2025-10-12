@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface EmpHolidaysRepo extends BaseRepository<EmpHolidays, Long> {
@@ -34,6 +35,25 @@ public interface EmpHolidaysRepo extends BaseRepository<EmpHolidays, Long> {
             @Param("cardId") String cardId,
             @Param("empType") String empType,
             @Param("holidayType") Integer holidayType);
+
+    @Query("SELECT NEW com.horan.elshamel.personnelmanagement.model.dto.query.EmpHolidaysSearchDto(" +
+            "h.id, h.startDate, e.cardId, e.name, j.name, " +
+            "h.holidayType, h.startDateString, h.endDateString, " +
+            "h.period, e.empType, h.etemad) " +
+            "FROM EmpHolidays h " +
+            "JOIN Employee e ON h.empId = e.id " +
+            "JOIN EmpJobs j ON e.jobId = j.id " +
+            "WHERE h.empId = :empId " +
+            "AND h.holidayType IN (:holidaysType) " +
+            "AND ((:fromDate IS NULL OR h.startDate >= :fromDate) " +
+            "AND (:toDate IS NULL OR h.startDate <= :toDate))" +
+            "ORDER BY e.name")
+    List<EmpHolidaysSearchDto> searchHolidaysWithDate(
+            @Param("empId") Long empId,
+            @Param("holidaysType") List<Integer> holidaysType,
+            @Param("fromDate")  Date fromDate,
+            @Param("toDate")  Date toDate
+    );
 
 
 // (h.cancel = 0 OR h.cancel IS NULL) " +
@@ -76,4 +96,43 @@ public interface EmpHolidaysRepo extends BaseRepository<EmpHolidays, Long> {
             @Param("holidayType") Integer holidayType
     );
 
+    @Query("SELECT COALESCE(SUM(h.period),0) FROM EmpHolidays h " +
+           "WHERE h.empId = :empId " +
+           "AND h.holidayType IN (:holidayType) " +
+           "AND ((:fromDate IS NULL OR h.startDate >= :fromDate) " +
+           "AND (:toDate IS NULL OR h.startDate <= :toDate))")
+    BigDecimal countHoliday(
+            @Param("empId") Long empId,
+            @Param("holidayType") List<Integer> holidayType,
+            @Param("fromDate") Date fromDate,
+            @Param("toDate") Date toDate
+    );
+
+    @Query("SELECT COALESCE(SUM(h.period),0) FROM EmpHolidays h " +
+           "WHERE h.empId = :empId " +
+           "AND h.holidayType IN (:holidaysType) " +
+           "AND substring(h.startDateString,1,4) = :year ")
+    BigDecimal countMorahal(@Param("empId")Long empId,
+                            @Param("holidaysType")List<Integer> holidaysType,
+                            @Param("year") String year);
+
+    interface HolidayProjection {
+        Long getId();
+        BigDecimal getPeriod();
+    }
+
+    @Query("SELECT h.id as id,COALESCE(h.period,0)AS period FROM EmpHolidays h " +
+           "WHERE h.empId = :empId " +
+           "AND h.holidayType IN (:holidayType) " +
+           "AND ((:fromDate IS NULL OR h.startDate >= :fromDate) " +
+           "AND (:toDate IS NULL OR h.startDate <= :toDate))")
+    List<HolidayProjection> countHolidayMotfareqa(
+            @Param("empId") Long empId,
+            @Param("holidayType") List<Integer> holidayType,
+            @Param("fromDate") Date fromDate,
+            @Param("toDate") Date toDate
+    );
+
 }
+
+

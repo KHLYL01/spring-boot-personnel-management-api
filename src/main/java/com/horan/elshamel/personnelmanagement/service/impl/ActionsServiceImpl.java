@@ -1,6 +1,5 @@
 package com.horan.elshamel.personnelmanagement.service.impl;
 
-import com.horan.elshamel.personnelmanagement.base.BaseServiceImpl;
 import com.horan.elshamel.personnelmanagement.model.entity.Actions;
 import com.horan.elshamel.personnelmanagement.repo.ActionsRepo;
 import com.horan.elshamel.personnelmanagement.service.ActionsService;
@@ -12,7 +11,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ActionsServiceImpl extends BaseServiceImpl<Actions,Long> implements ActionsService {
+public class ActionsServiceImpl implements ActionsService {
 
     private final ActionsRepo repo;
 
@@ -21,4 +20,8 @@ public class ActionsServiceImpl extends BaseServiceImpl<Actions,Long> implements
         return repo.filterActions(id, username, type, action, all, fromDate, toDate);
     }
 
+    @Override
+    public Actions save(Actions entity) {
+        return repo.save(entity);
+    }
 }

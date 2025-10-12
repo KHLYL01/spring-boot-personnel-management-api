@@ -3,8 +3,9 @@ package com.horan.elshamel.personnelmanagement.service.impl;
 import com.horan.elshamel.personnelmanagement.base.BaseServiceImpl;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHolidaysReportDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHolidaysSearchDto;
-import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHolidaysTamdeedReportDto;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHolidaysTamdeedFilterDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpHolidays;
+import com.horan.elshamel.personnelmanagement.model.entity.EmpHolidaysType;
 import com.horan.elshamel.personnelmanagement.repo.EmpHolidaysRepo;
 import com.horan.elshamel.personnelmanagement.repo.EmpHolidaysTamdeedRepo;
 import com.horan.elshamel.personnelmanagement.service.EmpHolidaysService;
@@ -15,7 +16,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -46,7 +46,7 @@ public class EmpHolidaysServiceImpl extends BaseServiceImpl<EmpHolidays, Long> i
         reportDtos.addAll(result);
 
         for (EmpHolidaysReportDto reportDto : reportDtos) {
-            EmpHolidaysTamdeedReportDto dto = tamdeedRepo.countPeriod(reportDto.getId()).get(0);
+            EmpHolidaysTamdeedFilterDto dto = tamdeedRepo.countPeriodWithoutHolidayType(reportDto.getId()).get(0);
             if(dto != null && dto.getSumOfPeriod() > 0) {
                 reportDto.setPeriod(reportDto.getPeriod().add(new BigDecimal(dto.getSumOfPeriod())));
                 reportDto.setTamdeedEndDate(dto.getTamdeedEnd());
@@ -56,6 +56,52 @@ public class EmpHolidaysServiceImpl extends BaseServiceImpl<EmpHolidays, Long> i
 
         return reportDtos;
     }
+
+    @Override
+    public BigDecimal countHoliday(Long empId, List<Integer> holidaysType, Date fromDate, Date toDate) {
+        BigDecimal count = repo.countHoliday(empId, holidaysType, fromDate, toDate);
+        System.out.println("countHoliday:"+count);
+        return count;
+    }
+
+    @Override
+    public BigDecimal countHolidayTamdeed(Long empId, List<Integer> holidaysType, Date fromDate, Date toDate) {
+        List<EmpHolidaysSearchDto> holidayWithEmpId = repo.searchHolidaysWithDate(empId,holidaysType,fromDate,toDate);
+
+        int tamdeedHave = 0;
+        for (EmpHolidaysSearchDto holiday : holidayWithEmpId) {
+            EmpHolidaysTamdeedFilterDto dto = tamdeedRepo.countPeriod(holiday.getId(),holidaysType ,fromDate,toDate).get(0);
+            if(dto != null && dto.getSumOfPeriod() > 0) {
+                tamdeedHave += dto.getSumOfPeriod();
+            }
+        }
+        System.out.println("tamdeedHave:"+tamdeedHave);
+        return BigDecimal.valueOf(tamdeedHave);
+    }
+
+    @Override
+    public BigDecimal countHolidayMotfareqa(Long empId, List<Integer> holidaysType, Date fromDate, Date toDate) {
+        List<EmpHolidaysRepo.HolidayProjection> holidayMotfareqa = repo.countHolidayMotfareqa(empId,holidaysType,fromDate,toDate);
+
+        int motafareqa = 0;
+        for (EmpHolidaysRepo.HolidayProjection holiday : holidayMotfareqa) {
+            motafareqa += holiday.getPeriod().intValue();
+            EmpHolidaysTamdeedFilterDto dto = tamdeedRepo.countPeriod(holiday.getId(),holidaysType,null,null).get(0);
+            if(dto != null && dto.getSumOfPeriod() > 0) {
+                motafareqa += dto.getSumOfPeriod();
+            }
+        }
+        System.out.println("motafareqa:"+motafareqa);
+        return BigDecimal.valueOf(motafareqa);
+    }
+
+    @Override
+    public BigDecimal countHolidayMorahal(Long empId, List<Integer> holidaysType, String year) {
+        BigDecimal count = repo.countMorahal(empId,holidaysType,year);
+        System.out.println("countHolidayMorahal:"+count);
+        return count;
+    }
+
 
     String getType(Integer holidayType) {
         if (holidayType == null) return "غير محدد";

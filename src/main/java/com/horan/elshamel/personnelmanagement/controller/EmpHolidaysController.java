@@ -4,8 +4,10 @@ import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHasmiatReportDt
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHolidaysReportDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHolidaysSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpHolidays;
+import com.horan.elshamel.personnelmanagement.model.entity.EmpHolidaysType;
 import com.horan.elshamel.personnelmanagement.service.EmpHolidaysService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,6 +53,37 @@ public class EmpHolidaysController {
             @RequestParam(required = false) Integer holidayType
             ) {
         return service.reportHolidays(all, empId, fromDate, toDate, fromPeriod, toPeriod, holidayType);
+    }
+
+    @GetMapping("/count")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public BigDecimal count(@RequestParam(required = false) Long empId ,
+                            @RequestParam(required = false) List<Integer> holidaysType,
+                            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fromDate,
+                            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date toDate) {
+        return service.countHoliday(empId,holidaysType,fromDate,toDate);
+    }
+
+    @GetMapping("/count-tamdeed")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public BigDecimal countTamdeed(@RequestParam(required = false) Long empId ,@RequestParam(required = false) List<Integer> holidaysType,@RequestParam(required = false)@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fromDate,@RequestParam(required = false)@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date toDate) {
+        return service.countHolidayTamdeed(empId,holidaysType,fromDate,toDate);
+    }
+
+    @GetMapping("/count-motfareqa")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public BigDecimal countMotfareqa(@RequestParam(required = false) Long empId ,@RequestParam(required = false) List<Integer> holidaysType,@RequestParam(required = false)@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fromDate,@RequestParam(required = false)@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date toDate) {
+        return service.countHolidayMotfareqa(empId,holidaysType,fromDate,toDate);
+    }
+
+    @GetMapping("/count-morahal")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public BigDecimal countMorahal(@RequestParam(required = false) Long empId ,@RequestParam(required = false) List<Integer> holidaysType,@RequestParam(required = false) String year) {
+        return service.countHolidayMorahal(empId,holidaysType,year);
     }
 
     @GetMapping("/{id}")

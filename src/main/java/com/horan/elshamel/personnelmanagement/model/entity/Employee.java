@@ -267,5 +267,8 @@ public class Employee extends BaseEntity<Long> {
     @Column(name = "DMOBASHRAH", length = 20)
     private String dmobashrah;
 
+    @Column(name = "IBANNUM", length = 50)
+    private String ibanNum;
+
 
 }
