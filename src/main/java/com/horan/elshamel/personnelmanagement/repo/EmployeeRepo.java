@@ -67,7 +67,7 @@ public interface EmployeeRepo extends BaseRepository<Employee, Long> {
            "0, e.naqlBadal, e.jobbadalat, 0, 0, 0, 0, e.taka3odM , " +
            "0,e.dissent, e.sandok,  e.zeraee , 0, 0, e.akdNoTasleef, " +
            "e.salary, e.naqlBadal, 0, 0, 0, 0, 0, 0, e.maeesha, '', " +
-           "e.badal1, e.badal2, e.badal3, e.badal4, e.hasm1, e.hasm2, e.isHasm3, 0) " +
+           "e.badal1, e.badal2, e.badal3, e.badal4, e.hasm1, e.hasm2, e.isHasm3, 0,e.ibanNum) " +
            "FROM Employee e INNER JOIN EmpJobs j ON e.jobId = j.id " +
            "WHERE e.jobState = 'مشغولة' " +
            "ORDER BY e.fia ASC")
@@ -78,7 +78,7 @@ public interface EmployeeRepo extends BaseRepository<Employee, Long> {
            "0, e.naqlBadal, e.jobbadalat, 0, 0, 0, 0, e.taka3odM , " +
            "0,e.dissent, e.sandok,  e.zeraee , 0, 0, e.akdNoTasleef, " +
            "e.salary, e.naqlBadal, 0, 0, 0, 0, 0, 0, e.maeesha, '', " +
-           "e.badal1, e.badal2, e.badal3, e.badal4, e.hasm1, e.hasm2, e.isHasm3, 0) " +
+           "e.badal1, e.badal2, e.badal3, e.badal4, e.hasm1, e.hasm2, e.isHasm3, 0,e.ibanNum) " +
            "FROM Employee e INNER JOIN EmpJobs j ON e.jobId = j.id " +
            "WHERE e.jobState = 'مشغولة' " +
            "AND (e.empType = :empType) " +
@@ -90,7 +90,7 @@ public interface EmployeeRepo extends BaseRepository<Employee, Long> {
            "0, e.naqlBadal, e.jobbadalat, 0, 0, 0, 0, e.taka3odM , " +
            "0,e.dissent, e.sandok,  e.zeraee , 0, 0, e.akdNoTasleef, " +
            "e.salary, e.naqlBadal, 0, 0, 0, 0, 0, 0, e.maeesha, '', " +
-           "e.badal1, e.badal2, e.badal3, e.badal4, e.hasm1, e.hasm2, e.isHasm3, 0) " +
+           "e.badal1, e.badal2, e.badal3, e.badal4, e.hasm1, e.hasm2, e.isHasm3, 0,e.ibanNum) " +
            "FROM Employee e INNER JOIN EmpJobs j ON e.jobId = j.id " +
            "WHERE e.jobState = 'مشغولة' " +
            "AND (e.empType = 'مستخدم' OR e.empType = 'موظف') " +
@@ -102,7 +102,7 @@ public interface EmployeeRepo extends BaseRepository<Employee, Long> {
            "0, e.naqlBadal, e.jobbadalat, 0, 0, 0, 0, e.taka3odM , " +
            "0,e.dissent, e.sandok,  e.zeraee , 0, 0, e.akdNoTasleef, " +
            "e.salary, e.naqlBadal, 0, 0, 0, 0, 0, 0, e.maeesha, '', " +
-           "e.badal1, e.badal2, e.badal3, e.badal4, e.hasm1, e.hasm2, e.isHasm3, 0) " +
+           "e.badal1, e.badal2, e.badal3, e.badal4, e.hasm1, e.hasm2, e.isHasm3, 0,e.ibanNum) " +
            "FROM Employee e INNER JOIN EmpJobs j ON e.jobId = j.id " +
            "WHERE e.jobState = 'مشغولة' " +
            "AND (e.empType = 'مستخدم' OR e.empType = 'موظف' OR e.empType = 'عامل بند إجور') " +
@@ -114,7 +114,7 @@ public interface EmployeeRepo extends BaseRepository<Employee, Long> {
            "0, e.naqlBadal, e.jobbadalat, 0, 0, 0, 0, e.taka3odM , " +
            "0,e.dissent, e.sandok,  e.zeraee , 0, 0, e.akdNoTasleef, " +
            "e.salary, e.naqlBadal, 0, 0, 0, 0, 0, 0, e.maeesha, '', " +
-           "e.badal1, e.badal2, e.badal3, e.badal4, e.hasm1, e.hasm2, e.isHasm3, 0) " +
+           "e.badal1, e.badal2, e.badal3, e.badal4, e.hasm1, e.hasm2, e.isHasm3, 0,e.ibanNum) " +
            "FROM Employee e INNER JOIN EmpJobs j ON e.jobId = j.id " +
            "WHERE e.jobState = 'مشغولة' " +
            "AND (e.empType = 'عامل بند إجور' OR e.empType = 'عامل بند إجور غير سعودى') " +

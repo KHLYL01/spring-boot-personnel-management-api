@@ -49,8 +49,9 @@ public class MosaeerSalaryDto {
     private Long hasm2;
     private Long isHasm3;
     private BigDecimal hasm3;
+    private String ibanNum;
 
-    public MosaeerSalaryDto(Long id, String empType, String name, String cardId, String jobName, String fia, BigDecimal draga, BigDecimal salary, int mosta7qSalary, BigDecimal naqlBadal, BigDecimal jobBadalat, int ma3esha, int addDays, int mosta7qTotal, int taka3ed, BigDecimal taka3odM, int gza, BigDecimal bank, BigDecimal sandok, BigDecimal zeraee, int hasmTotal, int safy, String comments, BigDecimal inSalary, BigDecimal inNaqlBadal, int inMosta7qSalary, int inMosta7qTotal, int inSafy, int safyNaqlBadal, int safyMa3esha, int inMa3esha, BigDecimal maeesha, String holidays, Long badal1, Long badal2, Long badal3, Long badal4, Long hasm1, Long hasm2, Long isHasm3, int hasm3) {
+    public MosaeerSalaryDto(Long id, String empType, String name, String cardId, String jobName, String fia, BigDecimal draga, BigDecimal salary, int mosta7qSalary, BigDecimal naqlBadal, BigDecimal jobBadalat, int ma3esha, int addDays, int mosta7qTotal, int taka3ed, BigDecimal taka3odM, int gza, BigDecimal bank, BigDecimal sandok, BigDecimal zeraee, int hasmTotal, int safy, String comments, BigDecimal inSalary, BigDecimal inNaqlBadal, int inMosta7qSalary, int inMosta7qTotal, int inSafy, int safyNaqlBadal, int safyMa3esha, int inMa3esha, BigDecimal maeesha, String holidays, Long badal1, Long badal2, Long badal3, Long badal4, Long hasm1, Long hasm2, Long isHasm3, int hasm3,String ibanNum) {
         this.id = id;
         this.empType = empType;
         this.name = name;
@@ -92,5 +93,6 @@ public class MosaeerSalaryDto {
         this.hasm2 = hasm2;
         this.isHasm3 = isHasm3;
         this.hasm3 = BigDecimal.ZERO;
+        this.ibanNum = ibanNum;
     }
 }

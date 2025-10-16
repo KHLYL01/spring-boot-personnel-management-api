@@ -100,8 +100,7 @@ public class Employee extends BaseEntity<Long> {
     @Column(name = "WORKJOB", length = 255)
     private String workJob;
 
-    @Column(name = "DISSENT", precision = 10, scale = 5)
-    private BigDecimal dissent;
+
 
     @Lob
     @Column(name = "PICEMP")
@@ -152,11 +151,8 @@ public class Employee extends BaseEntity<Long> {
     @Column(name = "AKDENDSERVICE", length = 200)
     private String akdEndService;
 
-    @Column(name = "AKDNOTASLEEF", length = 200)
-    private String akdNoTasleef;
 
-    @Column(name = "SANDOK", precision = 10, scale = 5)
-    private BigDecimal sandok;
+
 
     @Column(name = "CARD_NO", precision = 10, scale = 0)
     private Long cardNo;
@@ -225,8 +221,7 @@ public class Employee extends BaseEntity<Long> {
     @Column(name = "NADAFA", precision = 38, scale = 0)
     private BigDecimal nadafa;
 
-    @Column(name = "ZERAEE", precision = 10, scale = 2)
-    private BigDecimal zeraee;
+
 
     @Column(name = "DATTYKEED", length = 20)
     private String datTykeed;
@@ -267,8 +262,64 @@ public class Employee extends BaseEntity<Long> {
     @Column(name = "DMOBASHRAH", length = 20)
     private String dmobashrah;
 
+    // حسميات
+
     @Column(name = "IBANNUM", length = 50)
     private String ibanNum;
+
+    @Column(name = "DISSENT", precision = 10, scale = 5)
+    private BigDecimal dissent;
+
+    @Column(name = "AKDNOTASLEEF", length = 200)
+    private String akdNoTasleef;
+
+    @Column(name = "DATSTARTTASLEEF", length = 15)
+    private String datStartTasleef;
+
+    @Column(name = "DATENDTASLEEF", length = 15)
+    private String datEndTasleef;
+
+    @Column(name = "QESTTASLEEF")
+    private Long qestTasleef;
+
+    @Column(name = "MONEYTASLEEF")
+    private Long moneyTasleef;
+
+    @Column(name = "SANDOK", precision = 10, scale = 5)
+    private BigDecimal sandok;
+
+    @Column(name = "AKDNOSANDOK", length = 200)
+    private String akdNoSandok;
+
+    @Column(name = "DATSTARTSANDOK", length = 15)
+    private String datStartSandok;
+
+    @Column(name = "DATENDSANDOK", length = 15)
+    private String datEndSandok;
+
+    @Column(name = "QESTSANDOK")
+    private Long qestSandok;
+
+    @Column(name = "MONEYSANDOK")
+    private Long moneySandok;
+
+    @Column(name = "ZERAEE", precision = 10, scale = 2)
+    private BigDecimal zeraee;
+
+    @Column(name = "AKDNOZERAEE", length = 200)
+    private String akdNoZeraee;
+
+    @Column(name = "DATSTARTZERAEE", length = 15)
+    private String datStartZeraee;
+
+    @Column(name = "DATENDZERAEE", length = 15)
+    private String datEndZeraee;
+
+    @Column(name = "QESTZERAEE")
+    private Long qestZeraee;
+
+    @Column(name = "MONEYZERAEE")
+    private Long moneyZeraee;
 
 
 }
