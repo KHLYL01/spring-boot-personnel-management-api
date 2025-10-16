@@ -13,6 +13,10 @@ import java.util.List;
 @Repository
 public interface ActionsRepo extends BaseRepository<Actions, Long> {
 
+
+    @Query("SELECT COALESCE(MAX(a.id),0)+1 FROM Actions a")
+    Long getNextId();
+
     @Query("SELECT a FROM Actions a " +
            "WHERE (:id IS NULL OR a.id = :id) " +
            "AND (:username IS NULL OR a.username LIKE %:username%) " +

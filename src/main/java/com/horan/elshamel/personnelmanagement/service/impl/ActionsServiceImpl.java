@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -22,6 +23,9 @@ public class ActionsServiceImpl implements ActionsService {
 
     @Override
     public Actions save(Actions entity) {
+        entity.setId(repo.getNextId());
+        entity.setDat(LocalDate.now());
+        entity.setTim(LocalTime.now().toString().substring(0, 8));
         return repo.save(entity);
     }
 }

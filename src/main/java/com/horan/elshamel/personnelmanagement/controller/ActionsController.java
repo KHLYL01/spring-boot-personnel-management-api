@@ -50,8 +50,6 @@ public class ActionsController {
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public Actions save(@RequestBody Actions dto) {
-        dto.setDat(LocalDate.now());
-        dto.setTim(LocalTime.now());
         return service.save(dto);
     }
 
