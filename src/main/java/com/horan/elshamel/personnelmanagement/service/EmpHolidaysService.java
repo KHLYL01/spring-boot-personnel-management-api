@@ -4,7 +4,6 @@ import com.horan.elshamel.personnelmanagement.base.BaseService;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHolidaysReportDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHolidaysSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpHolidays;
-import com.horan.elshamel.personnelmanagement.model.entity.EmpHolidaysType;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -24,6 +23,8 @@ public interface EmpHolidaysService extends BaseService<Long, EmpHolidays> {
                          Date toDate);
 
     BigDecimal countHolidayTamdeed(Long empId, List<Integer> holidaysType, Date fromDate, Date toDate);
+
+    BigDecimal countHolidayCut(Long empId, List<Integer> holidaysType, Date fromDate, Date toDate);
 
     BigDecimal countHolidayMotfareqa(Long empId, List<Integer> holidaysType, Date fromDate, Date toDate);
 

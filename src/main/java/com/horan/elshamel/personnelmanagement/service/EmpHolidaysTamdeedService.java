@@ -9,6 +9,5 @@ public interface EmpHolidaysTamdeedService extends BaseService<Long,EmpHolidaysT
 
 
     List<EmpHolidaysTamdeed> findAllByHolidaysId(Long holidayId);
-//
-//    Long getNextId();
+
 }

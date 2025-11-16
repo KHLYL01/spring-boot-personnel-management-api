@@ -1,11 +1,12 @@
 package com.horan.elshamel.personnelmanagement.service.impl;
 
 import com.horan.elshamel.personnelmanagement.base.BaseServiceImpl;
+import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHolidaysCutFilterDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHolidaysReportDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHolidaysSearchDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHolidaysTamdeedFilterDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpHolidays;
-import com.horan.elshamel.personnelmanagement.model.entity.EmpHolidaysType;
+import com.horan.elshamel.personnelmanagement.repo.EmpHolidaysCutRepo;
 import com.horan.elshamel.personnelmanagement.repo.EmpHolidaysRepo;
 import com.horan.elshamel.personnelmanagement.repo.EmpHolidaysTamdeedRepo;
 import com.horan.elshamel.personnelmanagement.service.EmpHolidaysService;
@@ -13,7 +14,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +24,7 @@ public class EmpHolidaysServiceImpl extends BaseServiceImpl<EmpHolidays, Long> i
 
     private final EmpHolidaysRepo repo;
     private final EmpHolidaysTamdeedRepo tamdeedRepo;
+    private final EmpHolidaysCutRepo cutRepo;
 
     @Override
     public List<EmpHolidaysSearchDto> searchHolidays(Long empId, String name, String cardId, String empType, Integer holidayType) {
@@ -80,6 +81,21 @@ public class EmpHolidaysServiceImpl extends BaseServiceImpl<EmpHolidays, Long> i
     }
 
     @Override
+    public BigDecimal countHolidayCut(Long empId, List<Integer> holidaysType, Date fromDate, Date toDate) {
+        List<EmpHolidaysSearchDto> holidayWithEmpId = repo.searchHolidaysWithDate(empId,holidaysType,fromDate,toDate);
+
+        int cutHave = 0;
+        for (EmpHolidaysSearchDto holiday : holidayWithEmpId) {
+            EmpHolidaysCutFilterDto dto = cutRepo.countPeriod(holiday.getId(),holidaysType ,fromDate,toDate).get(0);
+            if(dto != null && dto.getSumOfPeriod() > 0) {
+                cutHave += dto.getSumOfPeriod();
+            }
+        }
+        System.out.println("cutHave:"+cutHave);
+        return BigDecimal.valueOf(cutHave);
+    }
+
+    @Override
     public BigDecimal countHolidayMotfareqa(Long empId, List<Integer> holidaysType, Date fromDate, Date toDate) {
         List<EmpHolidaysRepo.HolidayProjection> holidayMotfareqa = repo.countHolidayMotfareqa(empId,holidaysType,fromDate,toDate);
 
@@ -106,25 +122,25 @@ public class EmpHolidaysServiceImpl extends BaseServiceImpl<EmpHolidays, Long> i
     String getType(Integer holidayType) {
         if (holidayType == null) return "غير محدد";
 
-        switch (holidayType) {
-            case 0: return "إعتيادية سنوى";
-            case 1: return "إضطرارية";
-            case 2: return "إستثنائية";
-            case 3: return "تعويض";
-            case 4: return "مرضية";
-            case 5: return "مرافق";
-            case 6: return "اعتيادية مفرقة";
-            case 7: return "امومة (وضع)";
-            case 9: return "إعتيادى مرحل";
-            case 10: return "إعتيادى قديم";
-            case 11: return "إجازة الأبوة";
-            case 12: return "إجازة الوفاة";
-            case 13: return "إجازة الوضع";
-            case 14: return "إجازة الامتحانات";
-            case 15: return "الإجازة الخطيرة";
-            case 16: return "وقوع الكارثة";
-            default: return "نوع غير معروف";
-        }
+        return switch (holidayType) {
+            case 0 -> "إعتيادية سنوى";
+            case 1 -> "إضطرارية";
+            case 2 -> "إستثنائية";
+            case 3 -> "تعويض";
+            case 4 -> "مرضية";
+            case 5 -> "مرافق";
+            case 6 -> "اعتيادية مفرقة";
+            case 7 -> "امومة (وضع)";
+            case 9 -> "إعتيادى مرحل";
+            case 10 -> "إعتيادى قديم";
+            case 11 -> "إجازة الأبوة";
+            case 12 -> "إجازة الوفاة";
+            case 13 -> "إجازة الوضع";
+            case 14 -> "إجازة الامتحانات";
+            case 15 -> "الإجازة الخطيرة";
+            case 16 -> "وقوع الكارثة";
+            default -> "نوع غير معروف";
+        };
     }
 
 

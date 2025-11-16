@@ -1,10 +1,8 @@
 package com.horan.elshamel.personnelmanagement.controller;
 
-import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHasmiatReportDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHolidaysReportDto;
 import com.horan.elshamel.personnelmanagement.model.dto.query.EmpHolidaysSearchDto;
 import com.horan.elshamel.personnelmanagement.model.entity.EmpHolidays;
-import com.horan.elshamel.personnelmanagement.model.entity.EmpHolidaysType;
 import com.horan.elshamel.personnelmanagement.service.EmpHolidaysService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -70,6 +68,13 @@ public class EmpHolidaysController {
     @ResponseBody
     public BigDecimal countTamdeed(@RequestParam(required = false) Long empId ,@RequestParam(required = false) List<Integer> holidaysType,@RequestParam(required = false)@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fromDate,@RequestParam(required = false)@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date toDate) {
         return service.countHolidayTamdeed(empId,holidaysType,fromDate,toDate);
+    }
+
+    @GetMapping("/count-cut")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public BigDecimal countCut(@RequestParam(required = false) Long empId ,@RequestParam(required = false) List<Integer> holidaysType,@RequestParam(required = false)@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fromDate,@RequestParam(required = false)@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date toDate) {
+        return service.countHolidayCut(empId,holidaysType,fromDate,toDate);
     }
 
     @GetMapping("/count-motfareqa")
